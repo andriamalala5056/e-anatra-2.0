@@ -9,7 +9,8 @@ class EtablissementController < ApplicationController
   end
 
   def create
-    @etablissement = Etablissement.create(etablissement_params)
+    @etablissement = Etablissement.new(etablissement_params)
+    
   end
 
   def edit
