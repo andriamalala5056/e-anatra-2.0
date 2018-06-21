@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_21_093321) do
+ActiveRecord::Schema.define(version: 2018_06_21_124338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 2018_06_21_093321) do
     t.string "image"
     t.bigint "role_id"
     t.index ["role_id"], name: "index_etablissements_on_role_id"
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.string "email"
+    t.boolean "status", default: false
   end
 
   create_table "provinces", force: :cascade do |t|
