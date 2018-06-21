@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-anatra 2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--SEO Meta Tags-->
+    <meta name="description" content="M-Store - Modern E-Commerce Template" />
+    <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+    <meta name="author" content="Rokaux" />
+
+    <!--Mobile Specific Meta Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Material Icons -->
+    <link href="/css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+    <!-- Brand Icons -->
+    <link href="/css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+    <!-- Bootstrap -->
+    <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <!-- Theme Styles -->
+    <link href="/css/theme.min.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="/imput_file/css/style.css">
+
+    <!-- Page Preloading -->
+    <script src="/js/vendor/page-preloading.js"></script>
+
+    <!-- Modernizr -->
+    <script src="/js/vendor/modernizr.custom.js"></script>
+  </head>
+
+  <body class="page-preloading">
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+    <!-- Page Pre-Loader -->
+    <div class="page-preloader">
+      <div class="preloader">
+        <img src="/img/preloader.gif" alt="Preloader">
+      </div>
+    </div><!-- .page-preloader -->
+    <!-- Navbar -->
+    <!-- Remove ".navbar-sticky" class to make navigation bar scrollable with the page. -->
+    <header class="navbar navbar-sticky">
+       <!-- Site Logo -->
+       <a href="/" class="site-logo visible-desktop">
+       <span>[</span> E
+       <span class="text-gray">/</span>
+       ANATRA <span>]</span>
+       </a><!-- site-logo.visible-desktop -->
+       <a href="index.html" class="site-logo visible-mobile">
+       <span>[</span> E <span>]</span>
+       </a><!-- site-logo.visible-mobile -->
+       <!-- Language Switcher -->
+       <!--div class="lang-switcher">
+          <div class="lang-toggle">
+             <img src="/img/flags/FR.png" alt="French">
+             <i class="material-icons arrow_drop_down"></i>
+             <ul class="lang-dropdown">
+                <li><a href="index.html#"><img src="/img/flags/GB.png" alt="English">GB</a></li>
+                <li><a href="index.html#"><img src="/img/flags/DE.png" alt="German">DE</a></li>
+                <li><a href="index.html#"><img src="/img/flags/IT.png" alt="Italian">IT</a></li>
+             </ul>
+          </div>
+       </div-->
+       <!-- .lang-switcher -->
+       <!-- Main Navigation -->
+       <!-- Control the position of navigation via modifier classes: "text-left, text-center, text-right" -->
+       <nav class="main-navigation text-center">
+          <ul class="menu">
+             <li class="current-menu-item">
+                <a href="/">Accueil</a>
+             </li>
+             <li>
+                <a href="#">Trouver son école</a>
+             </li>
+             <li>
+                <a href="#">Blog</a>
+             </li>
+             <!--li class="menu-item-has-children">
+                <a href="index.html#">Pages</a>
+                <ul class="sub-menu">
+                   <li><a href="about.html">About</a></li>
+                   <li><a href="contacts.html">Contacts</a></li>
+                   <li><a href="faq.html">FAQ</a></li>
+                </ul>
+             </li-->
+          </ul>
+          <!-- .menu -->
+       </nav>
+
+       <!-- .main-navigation -->
+       <!-- Toolbar -->
+       <div class="toolbar">
+          <div class="inner">
+             <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+             <a href="/users/sign_in"><i class="material-icons person"></i></a>
+          </div>
+          <!-- .inner -->
+       </div>
+       <!-- .toolbar -->
+    </header>
+    <!-- .navbar.navbar-sticky -->
+
+    <%= yield %>
+
+    <!-- Footer -->
+    <footer class="footer">
+       <div class="column">
+          <p class="text-sm">Need support? Call <span class="text-primary">001 (917) 555-4836</span></p>
+          <div class="social-bar text-center space-bottom">
+             <a href="index.html#" class="sb-skype" data-toggle="tooltip" data-placement="top" title="Skype">
+             <i class="socicon-skype"></i>
+             </a>
+             <a href="index.html#" class="sb-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+             <i class="socicon-facebook"></i>
+             </a>
+             <a href="index.html#" class="sb-google-plus" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google+">
+             <i class="socicon-googleplus"></i>
+             </a>
+             <a href="index.html#" class="sb-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+             <i class="socicon-twitter"></i>
+             </a>
+             <a href="index.html#" class="sb-instagram" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+             <i class="socicon-instagram"></i>
+             </a>
+          </div>
+          <!-- .social-bar -->
+          <p class="copyright">&copy; 2016. Made with <i class="text-danger material-icons favorite"></i> by rokaux.</p>
+       </div>
+       <!-- .column -->
+       <div class="column">
+          <h3 class="widget-title">
+             Subscription
+             <small>To receive latest offers and discounts from the shop.</small>
+          </h3>
+          <form action="http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" class="subscribe-form" novalidate>
+             <input type="email" class="form-control" name="EMAIL" placeholder="Your e-mail">
+             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value=""></div>
+             <button type="submit"><i class="material-icons send"></i></button>
+          </form>
+       </div>
+       <!-- .column -->
+       <div class="column">
+          <h3 class="widget-title">
+             Payment Methods
+             <small>We support one of the following payment methods.</small>
+          </h3>
+          <div class="cards"><img src="/img/cards.png" alt="Cards"></div>
+          <!-- Scroll To Top Button -->
+          <div class="scroll-to-top-btn"><i class="material-icons trending_flat"></i></div>
+       </div>
+       <!-- .column -->
+    </footer>
+    <!-- .footer -->
+    </div><!-- .page-wrapper -->
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+    <script src="/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
+    <script src="/js/vendor/smoothscroll.js"></script>
+    <script src="/js/vendor/velocity.min.js"></script>
+    <script src="/js/vendor/waves.min.js"></script>
+    <script src="/js/vendor/icheck.min.js"></script>
+    <script src="/js/vendor/owl.carousel.min.js"></script>
+    <script src="/js/vendor/jquery.downCount.js"></script>
+    <script src="/js/vendor/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <!--script src="/imput_file/js/index.js"></script-->
+  </body>
+</html>

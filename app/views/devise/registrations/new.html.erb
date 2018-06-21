@@ -1,0 +1,209 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+
+ <!-- Featured Image -->
+ <!--div class="featured-image" style="background-image: url(/img/featured-image/account.jpg);"></div-->
+ <!-- Content -->
+ <section class="col-md-offset-3 padding-top-3x padding-left-right">
+    <h1 class="mobile-center">Créer <span class="text-semibold">un compte</span></h1>
+    <div class="row padding-top">
+       <div class="col-sm-8 padding-bottom-2x">
+          <!-- Nav Tabs -->
+          <ul class="nav-tabs mobile-center" role="tablist">
+             <li><a href="/users/sign_in" role="tab" data-toggle="tab">
+                <i class="material-icons person"></i>
+                Se connecter
+                </a>
+             </li>
+             <li class="active"><a href="/users/sign_up" role="tab" data-toggle="tab">
+                <i class="material-icons person_add"></i>
+                Créer un compte
+                </a>
+             </li>
+          </ul>
+          <!-- .nav-tabs -->
+          <!-- Tab Panes -->
+          <div class="tab-content">
+             <div role="tabpanel" class="tab-pane transition fade scale in active" id="profile">
+                <form method="post">
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="first_name">Photo de profile</label>
+                              <form action="#">
+                                <div class="input-file-container">
+                                  <%= f.file_field :image, autofocus: true, class: "input-file" %>
+                                  <label tabindex="0" for="image" class="input-file-trigger">Importer une photo...</label>
+                                </div>
+                                <p class="file-return"></p>
+                              </form>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="last_name">Type du compte</label>
+                            <div class="form-element form-select">
+                            <select class="form-control" id="country">
+                               <option value="">Etudiant</option>
+                               <option value="australia">Responsable</option>
+                            </select>
+                         </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="first_name">Nom</label>
+                            <%= f.text_field :name, id: "first_name", class: "form-control" %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="last_name">Prénom</label>
+                            <%= f.text_field :first_name, id: "last_name", class: "form-control" %>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="email">Adresse email</label>
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class: "form-control" %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="phone">Téléphone</label>
+                            <%= f.telephone_field :phone_number, id: "phone", class: "form-control" %>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="sex">Sexe</label>
+                            <%= select_tag(:sex, options_for_select([['Male', 1], ['Female', 2]]), id: "sex", class: "form-control") %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="date">Date de naissance</label>
+                            <%= f.date_field :birthday, id: "birthday", class: "form-control" %>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="adress">Adresse</label>
+                            <%= f.text_field :address, id: "adress", class: "form-control" %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="adress">Adresse</label>
+                            <%= f.text_field :address, class: "form-control" %>
+                         </div>
+                      </div>
+                      <!--div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="photo">Photo de profile</label>
+                            <!--%= f.file_field :image, id: "profile", class: "form-control" %-->
+                         </div>
+                      </div-->
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <% if @minimum_password_length %>
+                              <label for="password">Mot de passe <em>(<%= @minimum_password_length %> characters minimum)</em></label>
+                            <% end %>
+                            <%= f.password_field :password, autocomplete: "off", id: "password", class: "form-control" %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="password_confirm">Confirmer le mot de passe</label>
+                            <%= f.password_field :password_confirmation, autocomplete: "off", id: "password_confirm", class: "form-control" %>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <label class="checkbox space-top">
+                         <input type="checkbox" checked> Subscribe me to newsletter
+                         </label>
+                      </div>
+                      <div class="col-sm-6 text-right mobile-center">
+                         <button type="submit" class="btn btn-primary waves-effect waves-light">S'inscrire</button>
+                      </div>
+                   </div>
+                </form>
+             </div>
+             <!-- .tab-pane#profile -->
+             <!--div role="tabpanel" class="tab-pane transition fade scale" id="orders">
+                <div class="table-responsive">
+                   <table>
+                      <thead>
+                         <tr>
+                            <th>Order #</th>
+                            <th>Date Purchased</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr>
+                            <td><a href="account.html#">31719DA0567</a></td>
+                            <td>December 06, 2016</td>
+                            <td><span class="text-warning">In Progress</span></td>
+                            <td>$1,350.00</td>
+                         </tr>
+                         <tr>
+                            <td><a href="account.html#">22018770CV7</a></td>
+                            <td>November 11, 206</td>
+                            <td><span class="text-danger">Canceled</span></td>
+                            <td>$475.60</td>
+                         </tr>
+                         <tr>
+                            <td><a href="account.html#">4B33FG45520</a></td>
+                            <td>September 23, 2016</td>
+                            <td><span class="text-success">Delivered</span></td>
+                            <td>$2,140.80</td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div-->
+          </div>
+          <!-- .tab-content -->
+       </div>
+       <!-- .col-sm-8 -->
+    </div>
+    <!-- .row -->
+ </section>
+ <!-- .container -->
+
+<% end %>
+
+<script>
+document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  
+</script>
