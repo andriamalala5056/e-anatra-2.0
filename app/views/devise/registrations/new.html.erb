@@ -106,12 +106,6 @@
                             <%= f.text_field :address, class: "form-control" %>
                          </div>
                       </div>
-                      <!--div class="col-sm-6">
-                         <div class="form-element">
-                            <label for="photo">Photo de profile</label>
-                            <!--%= f.file_field :image, id: "profile", class: "form-control" %-->
-                         </div>
-                      </div-->
                    </div>
                    <div class="row">
                       <div class="col-sm-6">
@@ -132,11 +126,11 @@
                    <div class="row">
                       <div class="col-sm-6">
                          <label class="checkbox space-top">
-                         <input type="checkbox" checked> Subscribe me to newsletter
+                            <input type="checkbox" checked> Je comfirme avoir lu les <a data-toggle="modal" data-target="#exampleModalLong" href=""> termes et conditions </a>
                          </label>
                       </div>
                       <div class="col-sm-6 text-right mobile-center">
-                         <button type="submit" class="btn btn-primary waves-effect waves-light">S'inscrire</button>
+                         <button type="submit" class="btn btn-primary waves-effect waves-light">Se connecter</button>
                       </div>
                    </div>
                 </form>
@@ -186,6 +180,32 @@
  <!-- .container -->
 
 <% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Termes et coditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Mpianatra :</h1>
+        <p>
+          Tsy mandoa na ny ariary fa rehefa manao "inscription" amin'ny sekoly iray vao mandoa (ékôlazy)
+        </p>
+        <h1>Tompon'andraikitry ny sekoly :</h1>
+        <p>Mila mandoa vola any amin'i ANDO Andriamalala <i class="material-icons sentiment_very_satisfied"></i></p>
+      </div>
+      <!--div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div-->
+    </div>
+  </div>
+</div>
 
 <script>
 document.querySelector("html").classList.add('js');
