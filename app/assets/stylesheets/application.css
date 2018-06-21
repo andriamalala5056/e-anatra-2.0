@@ -24,4 +24,35 @@
 	font-size: 45px;
 }
 
+.navbar-message {
+	position:fixed;
+	z-index: 500000000000;
+}
 
+/* DEVISE NOTIFICATION */
+
+.alert-notice {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-alert {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-new {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 2rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.margin-for-alert {
+	padding-top: 20px;
+}
+
+/* DEVISE NOTIFICATION END */
