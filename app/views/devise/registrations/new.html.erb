@@ -44,8 +44,8 @@
                             <label for="last_name">Type du compte</label>
                             <div class="form-element form-select">
                             <select class="form-control" id="country">
-                               <option value="">Etudiant</option>
-                               <option value="australia">Responsable</option>
+                               <% role_array = Role.all.map { |role| [role.role_name.capitalize, role.id] } %>
+                               <%= options_for_select(role_array) %>
                             </select>
                          </div>
                          </div>
