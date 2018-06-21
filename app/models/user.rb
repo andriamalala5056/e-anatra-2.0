@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-        belongs_to :role
-		mount_uploader :image, ImageUploader
+  belongs_to :role
+  mount_uploader :image, ImageUploader
 end
