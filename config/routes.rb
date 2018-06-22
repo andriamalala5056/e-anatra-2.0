@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'newsletter/index'
+  get 'newsletter/new'
+  get 'newsletter/show'
+  get 'newsletter/create'
+  get 'newsletter/edit'
+  get 'newsletter/update'
+  get 'newsletter/destroy'
   get 'bot_twitter/direct_message', to: 'bot_twitter#direct_message', as: 'new_msg_twitter'
   get 'bot_twitter/get_followers', to: 'bot_twitter#get_followers', as: 'list_followers'
   get 'bot_twitter/get_screen_name', to: 'bot_twitter#get_screen_name', as: 'list_screen_name'
