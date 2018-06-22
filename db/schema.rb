@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_121033) do
   end
 
   create_table "provinces", force: :cascade do |t|
-    t.string "nom"
+    t.string "province_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
