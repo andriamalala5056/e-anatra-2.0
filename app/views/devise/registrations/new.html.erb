@@ -40,11 +40,11 @@
                          </div>
                       </div>
                       <div class="col-sm-6">
-                         <div class="form-element">
-                            <label for="last_name">Type du compte</label>
-                            <div class="form-element form-select">
-                                <%= select_tag "role", options_for_select({"Etudiant" => 1, "Responsable" => 2 }, "Etudiant"), class: 'form-control' %>
-                            </div>
+                        <div class="form-element form-select">
+                
+                          <label for="last_name">Type du compte</label>
+                               <%= f.select(:role, options_for_select([['etudiant', 'etudiant'], ['responsable', 'responsable']]), id: "role", class: "form-control") %>
+                         </div>
                          </div>
                       </div>
                    </div>
@@ -66,7 +66,7 @@
                       <div class="col-sm-6">
                          <div class="form-element">
                             <label for="sex">Sexe</label>
-                            <%= select_tag(:sex, options_for_select([['Male', 1], ['Female', 2]]), id: "sex", class: "form-control") %>
+                            <%= f.select(:sex, options_for_select([['Male', 'male'],['Female','female']]), id: "sex", class: "form-control") %>
                          </div>
                       </div>
                       <div class="col-sm-6">

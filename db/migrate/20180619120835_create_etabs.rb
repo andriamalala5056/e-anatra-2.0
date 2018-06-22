@@ -1,6 +1,6 @@
-class CreateEtablissements < ActiveRecord::Migration[5.2]
+class CreateEtabs < ActiveRecord::Migration[5.2]
   def change
-    create_table :etablissements do |t|
+    create_table :etabs do |t|
       t.string :nom_etab
       t.string :email
       t.string :phone_number
