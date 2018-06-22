@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_124553) do
+ActiveRecord::Schema.define(version: 2018_06_22_121033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_124553) do
     t.string "image"
   end
 
-  create_table "etablissements", force: :cascade do |t|
+  create_table "etabs", force: :cascade do |t|
     t.string "nom_etab"
     t.string "email"
     t.string "phone_number"
@@ -35,16 +35,34 @@ ActiveRecord::Schema.define(version: 2018_06_19_124553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_etabs_on_user_id"
+  end
+
+  create_table "etabs_filieres", id: false, force: :cascade do |t|
+    t.bigint "etab_id", null: false
+    t.bigint "filiere_id", null: false
+    t.index ["etab_id", "filiere_id"], name: "index_etabs_filieres_on_etab_id_and_filiere_id"
+    t.index ["filiere_id", "etab_id"], name: "index_etabs_filieres_on_filiere_id_and_etab_id"
+  end
+
+  create_table "filieres", force: :cascade do |t|
+    t.string "filiere"
+  end
+
+  create_table "filieres_niveaus", id: false, force: :cascade do |t|
+    t.bigint "filiere_id", null: false
+    t.bigint "niveau_id", null: false
+    t.index ["filiere_id", "niveau_id"], name: "index_filieres_niveaus_on_filiere_id_and_niveau_id"
+    t.index ["niveau_id", "filiere_id"], name: "index_filieres_niveaus_on_niveau_id_and_filiere_id"
+  end
+
+  create_table "niveaus", force: :cascade do |t|
+    t.string "niveau"
   end
 
   create_table "provinces", force: :cascade do |t|
     t.string "nom"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "role_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,12 +86,11 @@ ActiveRecord::Schema.define(version: 2018_06_19_124553) do
     t.date "birthday", null: false
     t.string "phone_number", default: "", null: false
     t.string "address", default: "", null: false
-    t.bigint "role_id"
     t.string "image"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "users", "roles"
+  add_foreign_key "etabs", "users"
 end
