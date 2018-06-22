@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(version: 2018_06_22_121033) do
     t.index ["niveau_id", "filiere_id"], name: "index_filieres_niveaus_on_niveau_id_and_filiere_id"
   end
 
+  create_table "newsletters", force: :cascade do |t|
+    t.string "email"
+    t.boolean "status", default: false
+  end
+
   create_table "niveaus", force: :cascade do |t|
     t.string "niveau"
   end
