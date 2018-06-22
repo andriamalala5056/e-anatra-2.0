@@ -5,12 +5,12 @@ class EtabsController < ApplicationController
   end
 
   def new
-      if user_signed_in? && current_user.role == "responsable"
+     # if user_signed_in? && current_user.role == "responsable"
         @etab = Etab.new
-      else
-        redirect_to etabs_path
-        flash[:notice] = "acces denied"
-      end
+      #else
+       # redirect_to etabs_path
+       # flash[:notice] = "acces denied"
+      #end
   end
 
   def create

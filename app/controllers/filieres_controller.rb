@@ -1,14 +1,15 @@
 class FilieresController < ApplicationController
   def new
-    if user_signed_in? && current_user.role == "responsable"
-      if current_user.etab   
+   # if user_signed_in? && current_user.role == "responsable"
+      
+    #  if current_user.etab   
         @fil = Filiere.new
-      else
-        redirect_to new_etab_path
-      end
-    else
-      redirect_to new_user_registration_path
-    end
+     # else
+      #  redirect_to new_etab_path
+     # end
+    #else
+     # redirect_to new_user_registration_path
+    #end
   end
 
   def create
