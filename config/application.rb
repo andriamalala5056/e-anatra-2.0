@@ -15,5 +15,8 @@ module EAnatra20
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.action_mailer.default_url_options = {
+      host: 'https://e-anatra.mg'
+    }
   end
 end
