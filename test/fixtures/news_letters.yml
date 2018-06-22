@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  role_name: MyString
+  email: MyString
+  status: false
 
 two:
-  role_name: MyString
+  email: MyString
+  status: false

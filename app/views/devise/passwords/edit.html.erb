@@ -1,25 +1,65 @@
-<h2>Change your password</h2>
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+ <section class="col-md-offset-3 padding-top-3x padding-left-right">
+    <h1 class="mobile-center">Nouveau <span class="text-semibold">mot de passe</span></h1>
+    <div class="row padding-top">
+       <div class="col-sm-8 padding-bottom-2x">
+          <!-- Nav Tabs -->
+          <ul class="nav-tabs mobile-center" role="tablist">
+             <li class="active"><a href="/passwords/edit" role="tab" data-toggle="tab">
+                <i class="material-icons sentiment_very_satisfied"></i>
+                Nouveau mot de passe
+                </a>
+             </li>
+             <li><a href="/users/sign_in" role="tab" data-toggle="tab">
+                <i class="material-icons person"></i>
+                Se connecter
+                </a>
+             </li>
+             <li><a href="/users/sign_up" role="tab" data-toggle="tab">
+                <i class="material-icons person_add"></i>
+                Créer un compte
+                </a>
+             </li>
+          </ul>
+          <!-- .nav-tabs -->
+          <!-- Tab Panes -->
+          <div class="tab-content">
+             <div role="tabpanel" class="tab-pane transition fade scale in active" id="profile">
+                <form method="post">
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                          <% if @minimum_password_length %>
+                            <label for="email">Nouveau mot de passe <em>(<%= @minimum_password_length %> characters minimum)</em></label>
+                          <% end %>
+                            <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="phone">Confirmer le mot de passe</label>
+                            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                        
+                      </div>
+                      <div class="col-sm-6 text-right mobile-center">
+                         <button type="submit" class="btn btn-primary waves-effect waves-light">Enregistrer</button>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+          <!-- .tab-content -->
+       </div>
+       <!-- .col-sm-8 -->
+    </div>
+    <!-- .row -->
+ </section>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

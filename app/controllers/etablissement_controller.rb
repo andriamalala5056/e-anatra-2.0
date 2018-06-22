@@ -1,11 +1,21 @@
 class EtablissementController < ApplicationController
-  before_action :get_id, only: [:show, :update, :destroy]
+  before_action :get_id, only: [:show, :update, :edit, :destroy]
   def index
     @etablissements = Etablissement.all
   end
 
   def new
-    @etablissement = Etablissement.new
+    # if user_signed_in?
+    #   if User.role == "responsable"
+        @etablissement = Etablissement.new
+    #   else
+    #     flash[:error] = "Vous avez déjà votre établissement!"
+    #     redirect_to etablissement_path
+    #   end
+    # else
+    #   flash[:error] = "Vous n'êtes pas un responsable!"
+    #   redirect_to etablissements_path
+    # end
   end
 
   def create
@@ -27,7 +37,7 @@ class EtablissementController < ApplicationController
   private
 
   def etablissement_params
-    params.require(:etablissement).permit(:nom_etab, :email, :phone_number, :address, :description, :category, :longitude, :latitude, :image)
+    params.require(:etablissement).permit(:nom_etab, :email, :phone_number, :address, :description, :category, :longitude, :latitude, :image, :province_name)
   end
 
   def get_id

@@ -1,0 +1,23 @@
+<%= form_for @etab, class:"form-horizontale" do |f| %>
+    <%= f.label :nom_etab %>
+    <%= f.text_field :nom_etab %><br>
+    <%= f.label :email %>
+    <%= f.email_field :email %><br>
+    <%= f.label :tel %>
+    <%= f.telephone_field :phone_number %><br>
+    <%= f.label :address %>
+    <%= f.text_field :address %><br>
+    <%= f.label :description %>
+    <%= f.text_field :description %><br>
+    <%= f.label :category %>
+    <%= f.text_field :category %><br>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %><br>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %><br>
+    <%= f.label :ajouter_image %>
+    <%= f.file_field :image %><br>
+    <%= f.submit %>
+
+ <% end %>
+ 

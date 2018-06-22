@@ -1,0 +1,25 @@
+<%= form_for @fil, class:"form-horizontale" do |f| %>
+    <%= f.label :filiere %>
+    <div id="fil">
+    <%= f.text_field :filiere %><br>
+    </div>
+    <p id="new">ajouter </p>
+    <%= f.submit :creer%>
+
+ <% end %>
+
+ <script type="text/javascript">
+    var fil = document.getElementById("fil");
+    var n = document.getElementById("new");
+    n.onclick = function(){
+    var fil = document.getElementById("fil");
+    var input = document.createElement("input");
+    var br = document.createElement("br");
+    input.setAttribute('type','text');
+    input.setAttribute('name','filiere[filiere]');
+    input.setAttribute('id','filiere_filiere');
+    fil.appendChild(input);
+    fil.appendChild(br);
+    e.preventDefault();
+    }
+ </script>
