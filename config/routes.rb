@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'newsletter/edit'
   get 'newsletter/update'
   get 'newsletter/destroy'
+  get 'newsletter/send_newsletter', to: 'newsletter#send_newsletter'
   get 'bot_twitter/direct_message', to: 'bot_twitter#direct_message', as: 'new_msg_twitter'
   get 'bot_twitter/get_followers', to: 'bot_twitter#get_followers', as: 'list_followers'
   get 'bot_twitter/get_screen_name', to: 'bot_twitter#get_screen_name', as: 'list_screen_name'
