@@ -1,5 +1,5 @@
 class EtabsController < ApplicationController
-  before_action :get_id, only: [:show, :update, :destroy]
+  before_action :get_id, only: [:show, :edit, :update, :destroy]
   def index
     @etab = Etab.all
   end
