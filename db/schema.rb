@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_121033) do
+ActiveRecord::Schema.define(version: 2018_06_23_070847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_121033) do
   end
 
   create_table "filieres", force: :cascade do |t|
-    t.string "filiere"
+    t.string "filiere_name"
   end
 
   create_table "filieres_niveaus", id: false, force: :cascade do |t|
@@ -57,9 +57,19 @@ ActiveRecord::Schema.define(version: 2018_06_22_121033) do
     t.index ["niveau_id", "filiere_id"], name: "index_filieres_niveaus_on_niveau_id_and_filiere_id"
   end
 
+  create_table "mailings", force: :cascade do |t|
+    t.string "subject"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "newsletters", force: :cascade do |t|
+    t.string "lastname"
+    t.string "firstname"
     t.string "email"
-    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "niveaus", force: :cascade do |t|
@@ -92,7 +102,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_121033) do
     t.string "phone_number", default: "", null: false
     t.string "address", default: "", null: false
     t.string "image"
-    t.string "role"
+    t.string "role", default: "Etudiant"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

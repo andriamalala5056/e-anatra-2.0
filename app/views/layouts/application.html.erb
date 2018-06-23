@@ -159,12 +159,10 @@
              Subscription
              <small>To receive latest offers and discounts from the shop.</small>
           </h3>
-          <form action="http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" class="subscribe-form" novalidate>
-             <input type="email" class="form-control" name="EMAIL" placeholder="Your e-mail">
+            <%= form_tag newsletter_index_path, method: "post", class: "subscribe-form" %>
+             <a type="button" class="form-control btn btn-primary" href="<%= new_newsletter_path %>"><i class="material-icons email"></i>  Newsletter</a>
              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value=""></div>
-             <button type="submit"><i class="material-icons send"></i></button>
-          </form>
        </div>
        <!-- .column -->
        <div class="column">

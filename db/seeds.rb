@@ -14,3 +14,10 @@
 # province4 = Province.create(province_name: 'Mahajanga')
 # province5 = Province.create(province_name: 'Taolagnaro')
 # province6 = Province.create(province_name: 'Toamasina')
+
+# filiere1 = Filiere.create(filiere_name: 'Informatique')
+# filiere2 = Filiere.create(filiere_name: 'Gestion')
+# filiere3 = Filiere.create(filiere_name: 'Langue')
+# filiere4 = Filiere.create(filiere_name: 'Tourisme')
+# filiere5 = Filiere.create(filiere_name: 'Medecine')
+# filiere6 = Filiere.create(filiere_name: 'Autre')

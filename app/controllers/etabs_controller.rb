@@ -7,6 +7,8 @@ class EtabsController < ApplicationController
   def new
      # if user_signed_in? && current_user.role == "responsable"
         @etab = Etab.new
+        @provinces = Province.all
+        @filieres = Filiere.all
       #else
        # redirect_to etabs_path
        # flash[:notice] = "acces denied"
