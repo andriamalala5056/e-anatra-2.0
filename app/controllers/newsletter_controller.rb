@@ -30,7 +30,7 @@ class NewsletterController < ApplicationController
   private
 
   def newsletter_params
-    params.require(:newsletter).permit(:email)
+    params.require(:newsletter).permit(:email, :lastname, :firstname)
   end
 
   def get_id

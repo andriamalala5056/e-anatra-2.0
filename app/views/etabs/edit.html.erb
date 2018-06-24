@@ -78,7 +78,7 @@
 <script type="text/javascript">
 $(function(){
     // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(< %= @etab.latitude || '-18.906551790567445' % >, < %= @etab.longitude || '47.51344915311279' % >)
+    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
 
     var map = new google.maps.Map(document.getElementById('edit_map'),{
         zoom : 18,

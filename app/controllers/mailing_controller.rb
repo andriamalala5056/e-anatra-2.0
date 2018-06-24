@@ -1,12 +1,16 @@
 class MailingController < ApplicationController
   def index
     @message_mailing = Mailing.last
-    message = {}
-    message[:subject] = @message_mailing.subject
-    message[:email] = 'andryhaj@gmail.com'
-    message[:name]  = 'Andry'
-    message[:body]  = @message_mailing.message
-    ContactMailer.contact(message).deliver_now
+    @destinataires = Newsletter.all
+    # message = {}
+    # message[:subject] = @message_mailing.subject
+    # message[:email] = 'andryhaj@gmail.com'
+    # message[:name]  = 'Andry'
+    # message[:body]  = @message_mailing.message
+    # ContactMailer.contact(message).deliver_now
+    @destinataires.each do |destinataire|
+      ContactMailer.contact(destinataire, Mailing.last).deliver_now
+    end
   end
 
   def new

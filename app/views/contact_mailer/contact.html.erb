@@ -1,11 +1,10 @@
-    <h1>Welcome to example.com, </h1>
-    <h3><%= @message_body %></h3>
+    <h1>Bonjour, <%= @destinataire.firstname %></h1>
+    <h3>Vous avez souscrit sur notre newsletter, alors, voici la nouvelle:</h3>
     <p>
-      You have successfully signed up to example.com,
-      your username is: .<br>
-    </p>
+    Chère <%= @destinataire.firstname %>,
+    <p><%= @message.message %></p>
     <p>
-      To login to the site, just follow this link: .
+      Pour accéder au site,
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    
     <%= link_to "Voir notre site", root_url %>
