@@ -29,7 +29,7 @@
                    <div class="row">
                       <div class="col-sm-6">
                          <div class="form-element">
-                            <label for="first_name">Photo de profile</label>
+                            <label for="image">Photo de profile</label>
                               <form action="#">
                                 <div class="input-file-container">
                                   <%= f.file_field :image, autofocus: true, class: "input-file" %>
@@ -41,9 +41,9 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-element">
-                          <label for="last_name">Type du compte</label>
+                          <label for="role">Type du compte</label>
                             <div class="form-element form-select">
-                               <%= f.select(:role, options_for_select([['etudiant', 'etudiant'], ['responsable', 'responsable']]), id: "role", class: "form-control") %>
+                               <%= f.select(:role, options_for_select([['Etudiant', 'etudiant'], ['Responsable', 'responsable']]), class: "form-control") %>
                             </div>
                          </div>
                       </div>
@@ -146,8 +146,12 @@
       <div class="modal-body">
         <h1>Mpianatra :</h1>
         <p>
-          Tsy mandoa na ny ariary fa rehefa manao "inscription" amin'ny sekoly iray vao mandoa (ékôlazy)
+        Pour les étudiants, l'inscription au site e-anatra est totalement gratuit<br>
+        Vous pouvez consulter tous les établissements inscrits sur notre site, voir le blog et le commenté même sans inscription.<br>
+        Mais, pour vous inscrire à une établissement, il vous faudra d'abord s'inscrire gratuitement sur notre site.<br>
+        Ensuite, lors de l'inscription à une établissement, vous payé seulement le droit et écolage
         </p>
+        <hr>
         <h1>Tompon'andraikitry ny sekoly :</h1>
         <p>Mila mandoa vola any amin'i ANDO Andriamalala <i class="material-icons sentiment_very_satisfied"></i></p>
       </div>
