@@ -17,7 +17,7 @@ class Etab < ApplicationRecord
 
 	def self.search(term)
 		if term
-		  where('nom_etab LIKE ?', "%#{term}%").order('id DESC')
+		  where('lower(nom_etab) LIKE ?', "%#{term.downcase}%").order('id DESC')
 		else
 		  order('id DESC') 
 		end
