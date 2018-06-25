@@ -32,6 +32,7 @@ class EtabsController < ApplicationController
   end
 
   def show
+    @etab = Etab.find(params[:id])
   end
 
   def destroy

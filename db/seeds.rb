@@ -22,7 +22,7 @@ niveau5 = Niveau.create(niveau:"Doctorat")
 
 filiere1 = Filiere.create(filiere:"Gestion")
 filiere2 = Filiere.create(filiere:"Droit")
-filiere3 = Filiere.create(filiere:"Resau Informatique")
+filiere3 = Filiere.create(filiere:"Réseau Informatique")
 filiere4 = Filiere.create(filiere:"Programmation Informatique")
 filiere5 = Filiere.create(filiere:"Multimedia")
 filiere6 = Filiere.create(filiere:"Eléctronique")

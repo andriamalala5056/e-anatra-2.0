@@ -1,4 +1,8 @@
 class FilieresController < ApplicationController
+  def index
+    @filieres = Filiere.all
+  end
+  
   def new
    # if user_signed_in? && current_user.role == "responsable"
       
