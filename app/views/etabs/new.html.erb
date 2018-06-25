@@ -25,12 +25,12 @@ $(function(){
     });
 
     $('#address').keypress(function(e){
-        if(e.keyCode === 13){
+        if(e.keyCode == 13){
             var request = {
                 address : $(this).val()
             }
             geocoder.geocode(request, function(results, status){
-                if(status === google.maps.GeocoderStatus.OK){
+                if(status == google.maps.GeocoderStatus.OK){
                     map.setCenter(results[0].geometry.location);
                 }
             });
