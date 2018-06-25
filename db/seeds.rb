@@ -22,6 +22,6 @@
 # filiere5 = Filiere.create(filiere_name: 'Medecine')
 # filiere6 = Filiere.create(filiere_name: 'Autre')
 
-# newsletter1 = Newsletter.create(lastname: 'ANDRIANAVALONA', firstname:'Andry', email: 'andry@gmail.com')
+# newsletter1 = Newsletter.create(lastname: 'ANDRIANAVALONA', firstname:'Andry', email: 'eanatramada@gmail.com')
 # newsletter2 = Newsletter.create(lastname: 'ANDRIANAVALONA', firstname:'Kanto', email: 'kanto@gmail.com')
 # newsletter3 = Newsletter.create(lastname: 'ANDRIANAVALONA', firstname:'Fetra', email: 'fetra@gmail.com')
