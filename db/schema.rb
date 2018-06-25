@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_115934) do
+ActiveRecord::Schema.define(version: 2018_06_25_183111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.bigint "user_id"
+    t.bigint "province_id"
+    t.index ["province_id"], name: "index_etabs_on_province_id"
     t.index ["user_id"], name: "index_etabs_on_user_id"
   end
 
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
   end
 
   add_foreign_key "articles", "etabs"
+  add_foreign_key "etabs", "provinces"
   add_foreign_key "etabs", "users"
   add_foreign_key "etabs_filieres", "etabs"
   add_foreign_key "etabs_filieres", "filieres"
