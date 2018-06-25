@@ -4,7 +4,7 @@ class Etab < ApplicationRecord
 	#un etab appartient à un user
 	belongs_to :user
 	#un etab a 0 ou plusieurs filieres
-    has_many :etabs_filieres    
+  has_many :etabs_filieres    
 	has_many :filieres, through: :etabs_filieres
 	
 	has_many :articles
@@ -12,4 +12,13 @@ class Etab < ApplicationRecord
 
 	has_many :inscriptions    
 	#has_many :user, through: :inscriptions
+
+	def self.search(term)
+		if term
+		  where('nom_etab LIKE ?', "%#{term}%").order('id DESC')
+		else
+		  order('id DESC') 
+		end
+	end
+	  
 end

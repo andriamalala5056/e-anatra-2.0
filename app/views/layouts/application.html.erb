@@ -82,7 +82,7 @@
                   <a href="/">Accueil</a>
                </li>
                <li>
-                  <a href="#">Trouver son école</a>
+                  <a href="<%= etabs_path %>">Trouver son école</a>
                </li>
 
                <li class="menu-item-has-children">
@@ -241,12 +241,10 @@
              Subscription
              <small>To receive latest offers and discounts from the shop.</small>
           </h3>
-          <form action="http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" class="subscribe-form" novalidate>
-             <input type="email" class="form-control" name="EMAIL" placeholder="Your e-mail">
+            <%= form_tag newsletter_index_path, method: "post", class: "subscribe-form" %>
+             <a type="button" class="form-control btn btn-primary" href="<%= new_newsletter_path %>"><i class="material-icons email"></i>  Newsletter</a>
              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value=""></div>
-             <button type="submit"><i class="material-icons send"></i></button>
-          </form>
        </div>
        <!-- .column -->
        <div class="column">
@@ -274,5 +272,10 @@
     <script src="/js/vendor/magnific-popup.min.js"></script>
     <script src="/js/scripts.js"></script>
     <!--script src="/imput_file/js/index.js"></script-->
+    
+    <!-- JS pour google map -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyC67N2lv2tfsygV77l2PXdD7l2hkMQEBpc"></script>
   </body>
 </html>

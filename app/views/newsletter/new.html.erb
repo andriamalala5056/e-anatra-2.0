@@ -1,2 +1,20 @@
-<h1>Newsletter#new</h1>
-<p>Find me in app/views/newsletter/new.html.erb</p>
+<div class="container">
+<h1> Souscription à notre newsletter</h1>
+<%= form_for @newsletter, url: newsletter_index_path do |f| %>
+    <div class="row">
+        <div class="form-element">
+            <label for="email">Adresse email</label>
+            <%= f.email_field :email, class: 'form-control', placeholder:'Votre e-mail' %>
+        </div>
+        <div class="form-element">
+            <label for="lastname">Nom</label>
+            <%= f.text_field :lastname, class: "form-control" %>
+        </div>
+        <div class="form-element">
+            <label for="firstname">Prénom</label>
+            <%= f.text_field :firstname, class: "form-control" %>
+        </div>
+    </div>
+    <%= f.submit "Enregistrer" %>
+<% end %>
+</div>

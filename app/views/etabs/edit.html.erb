@@ -1,2 +1,125 @@
-<h1>Etablissement#edit</h1>
-<p>Find me in app/views/etablissement/edit.html.erb</p>
+<div class="container">
+<%= form_for @etab, class:"form-horizontale" do |f| %>
+    <div class="form-group">
+        <label>Image représentant votre établissement</label><br>
+        <%= f.file_field :image %>
+    </div>
+
+    <div class="form-group">
+        <label for="nom_etab">Nom de l'établissement</label>
+        <%= f.text_field :nom_etab, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <%= f.email_field :email, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <label for="phone_number">Téléphone</label>
+        <%= f.telephone_field :phone_number, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <label for="address">Adresse</label>
+        <%= f.text_field :address, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Catégorie</label>
+        <%= f.text_field :category, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description de votre établissement</label>
+        <%= f.text_area :description, class: "form-control form-control-lg text-editor" %>
+    </div>
+
+    <hr/>
+    
+    <div class="form-group">
+        <label>Provinces</label>
+        <% @provinces.each do |province| %>
+            <input id="<%= province.province_name.downcase %>" name="<%= province.province_name.downcase %>" type="checkbox" value="<%= province.province_name %>" />
+            <label for="<%= province.province_name.downcase %>"><%= province.province_name %></label>
+        <% end %>
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+        <label>Filières</label>
+        <% @filieres.each do |filiere| %>
+            <input id="<%= filiere.filiere_name.downcase %>" name="<%= filiere.filiere_name.downcase %>" type="checkbox" value="<%= filiere.filiere_name %>" />
+            <label for="<%= filiere.filiere_name.downcase %>"><%= filiere.filiere_name %></label>
+        <% end %>
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+        <label>Latitude</label>
+        <%= f.text_field :latitude, class: "form-control form-control-lg", readonly: "" %>
+    </div>
+
+    <div class="form-group">
+        <label>Longitude</label>
+        <%= f.text_field :longitude, class: "form-control form-control-lg", readonly: "" %>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-primary">Créer mon établissement</button>
+    </div>
+
+ <% end %>
+ <div id="edit_map"></div>
+ </div>
+
+<script type="text/javascript">
+$(function(){
+    // On va remplacer dynamiquement la latitude et longitude
+    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
+
+    var map = new google.maps.Map(document.getElementById('edit_map'),{
+        zoom : 18,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    // Initialisation du marker
+    var marker = new google.maps.Marker({
+        position : latlng,
+        map : map,
+        title : 'Bougez ce marqueur',
+        draggable : true
+    });
+
+    // Initialisation du geocoder
+    var geocoder = new google.maps.Geocoder();
+
+    google.maps.event.addListener(marker, 'drag', function(){
+        setPosition(marker);
+    });
+
+    $('#address').keypress(function(e){
+        if(e.keyCode == 13){
+            var request = {
+                address : $(this).val()
+            }
+            geocoder.geocode(request, function(results, status){
+                if(status == google.maps.GeocoderStatus.OK){
+                    map.setCenter(results[0].geometry.location);
+                }
+            });
+            return false;
+        }
+    });
+
+});
+
+function setPosition(marker){
+    var pos = marker.getPosition();
+    $('#latitude').val(pos.lat());
+    $('#longitude').val(pos.lng());
+};
+</script>

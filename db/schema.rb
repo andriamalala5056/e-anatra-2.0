@@ -75,9 +75,19 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.index ["vague_id"], name: "index_inscriptions_on_vague_id"
   end
 
+  create_table "mailings", force: :cascade do |t|
+    t.string "subject"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "newsletters", force: :cascade do |t|
+    t.string "lastname"
+    t.string "firstname"
     t.string "email"
-    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "niveaus", force: :cascade do |t|
@@ -110,7 +120,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.string "phone_number", default: "", null: false
     t.string "address", default: "", null: false
     t.string "image"
-    t.string "role"
+    t.string "role", default: "etudiant"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

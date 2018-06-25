@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   get 'bot_twitter/send_public_tweet', to: 'bot_twitter#send_public_tweet', as: 'send_public_tweet'
   get 'bot_twitter/send_private_tweet', to: 'bot_twitter#send_private_tweet', as: 'send_private_tweet'
   
+  get 'newsletter/send_newsletter', to: 'newsletter#send_newsletter'
+  resources :newsletter
+
+  resources :mailing
+  
   resources :articles
 
   resources :provinces

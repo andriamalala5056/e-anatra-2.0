@@ -1,11 +1,14 @@
+require 'dotenv'
+Dotenv.load
 class NewsletterController < ApplicationController
-  before_action :get_id, only: [:show, :update, :edit, :destroy]
+  before_action :get_id, only: [:show, :destroy]
 
   def index
       @newsletters = Newsletter.all
   end
   
   def new
+    @newsletter = Newsletter.new
   end
   
   def create
@@ -27,7 +30,7 @@ class NewsletterController < ApplicationController
   private
 
   def newsletter_params
-    params.require(:newsletter).permit(:email)
+    params.require(:newsletter).permit(:email, :lastname, :firstname)
   end
 
   def get_id

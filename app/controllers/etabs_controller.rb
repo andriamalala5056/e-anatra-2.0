@@ -1,7 +1,13 @@
 class EtabsController < ApplicationController
-  before_action :get_id, only: [:show, :update, :destroy]
+  before_action :get_id, only: [:show, :edit, :update, :destroy]
+
   def index
-    @etab = Etab.all
+    @etab = Etab.search(params[:term])
+    # @etab = if params[:term]
+    #   Etab.where('nom_etab LIKE ?', "%#{params[:term]}%")
+    # else
+    #   Etab.all
+    # end
   end
 
   def new
@@ -22,12 +28,12 @@ class EtabsController < ApplicationController
   def create
 
     @etab = Etab.new(etab_params)
-    current_user.etab = @etab
+    # current_user.etab = @etab
     if @etab.save
       flash[:success] = "success"
-      redirect_to @etab
+      redirect_to etabs_path
     else
-      redirect_to new
+      render "new"
     end
   end
 
@@ -47,7 +53,7 @@ class EtabsController < ApplicationController
   private
 
   def etab_params
-    params.require(:etab).permit(:nom_etab, :email, :phone_number, :address, :description, :category, :longitude, :latitude, :image)
+    params.require(:etab).permit(:nom_etab, :email, :phone_number, :address, :description, :category, :longitude, :latitude, :image, :term)
   end
 
   def get_id

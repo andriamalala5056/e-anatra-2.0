@@ -1,7 +1,12 @@
 class ContactMailer < ApplicationMailer
-    def contact(user)
-        @user = user
-        @url  = 'http://example.com/login'
-        mail(to: @user, subject: 'Welcome to My Awesome Site')
+    default from: 'andryhaj@gmail.com'
+    def contact(destinataire, message)
+        @destinataire = destinataire
+        @message = message
+        # mail :subject => "#{message[:subject]} from: #{message[:name]}",
+        # :to      => "eanatramada@gmail.com",
+        # :from    => message[:email],
+        # :body => message[:message]#message[:body]
+        mail(to: "#{@destinataire.email}", subject:"#{@message.subject}")
     end
 end
