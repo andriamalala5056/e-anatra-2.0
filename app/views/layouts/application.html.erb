@@ -114,7 +114,9 @@
                                 <% end %>
                               </ul>
                             </li>
-                            <li><a href="#">Submenu Item 3</a></li>
+                            <li>
+                              <a href="<%= new_article_path %>">Créer article</a>
+                            </li>
                           </ul>
                           <!-- ETUDIANT -->
                         <% else %>
@@ -178,7 +180,8 @@
          <div class="toolbar">
             <div class="inner">
               <% if user_signed_in? %>  
-                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>div
+              <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               <% else %>
                 <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
                 <a href="/users/sign_in"><i class="material-icons person"></i></a>

@@ -21,7 +21,8 @@ class EtabsFilieresController < ApplicationController
         redirect_to root_path
       end
     else
-      redirect_to root_path
+      flash[:error] = "Connectez dabord !"
+      redirect_to new_user_session_path
     end
   end
 
