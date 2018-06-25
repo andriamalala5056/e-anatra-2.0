@@ -99,6 +99,9 @@
                                 <% if current_user.etab != nil %>
                                   <li><a href="<%= etab_path(current_user.etab.id) %>">Mon etablissement</a></li>
                                   <li><a href="#">Modifier</a></li>
+                                  <li>
+                                    <a href="<%= new_article_path %>">Créer article</a>
+                                  </li>
                                 <% else %>
                                   <li><a href="<%= new_etab_path %>">Créez votre établissement</a></li>
                                 <% end %>
@@ -114,9 +117,7 @@
                                 <% end %>
                               </ul>
                             </li>
-                            <li>
-                              <a href="<%= new_article_path %>">Créer article</a>
-                            </li>
+                            
                           </ul>
                           <!-- ETUDIANT -->
                         <% else %>

@@ -5,12 +5,18 @@ class EtabsController < ApplicationController
   end
 
   def new
-     # if user_signed_in? && current_user.role == "responsable"
-        @etab = Etab.new
-      #else
-       # redirect_to etabs_path
+      if user_signed_in? && current_user.role == "responsable"
+        if current_user.etab != nil
+          flash[:notice] = "Vous avez déjà votre établissement"
+          redirect_to etab_path(current_user.etab.id)
+        else
+          @etab = Etab.new
+        end
+      else
+        flash[:notice] = "Vous n'êtes pas responsable"
+        redirect_to root_path
        # flash[:notice] = "acces denied"
-      #end
+      end
   end
 
   def create

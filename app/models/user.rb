@@ -10,5 +10,5 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
  
   has_many :inscriptions    
-	has_many :etab, through: :inscriptions
+	#has_many :etab, through: :inscriptions
 end

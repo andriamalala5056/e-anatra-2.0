@@ -11,5 +11,5 @@ class Etab < ApplicationRecord
 	has_many :vagues
 
 	has_many :inscriptions    
-	has_many :user, through: :inscriptions
+	#has_many :user, through: :inscriptions
 end
