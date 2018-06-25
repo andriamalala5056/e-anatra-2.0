@@ -46,7 +46,9 @@ function setPosition(marker){
     $('#longitude').val(pos.lng());
 };
 </script>
-
+<section class="container-fluid padding-top-3x">
+   <!-- .row -->
+   <div class="row padding-top">
 <div class="container">
 <%= form_for @etab, class:"form-horizontale" do |f| %>
     <div class="form-group">
@@ -87,26 +89,6 @@ function setPosition(marker){
     <hr/>
     
     <div class="form-group">
-        <label>Provinces</label>
-        <% @provinces.each do |province| %>
-            <input id="<%= province.province_name.downcase %>" name="<%= province.province_name.downcase %>" type="checkbox" value="<%= province.province_name %>" />
-            <label for="<%= province.province_name.downcase %>"><%= province.province_name %></label>
-        <% end %>
-    </div>
-
-    <hr/>
-
-    <div class="form-group">
-        <label>Filières</label>
-        <% @filieres.each do |filiere| %>
-            <input id="<%= filiere.filiere_name.downcase %>" name="<%= filiere.filiere_name.downcase %>" type="checkbox" value="<%= filiere.filiere_name %>" />
-            <label for="<%= filiere.filiere_name.downcase %>"><%= filiere.filiere_name %></label>
-        <% end %>
-    </div>
-
-    <hr/>
-
-    <div class="form-group">
         <label>Latitude</label>
         <%= f.text_field :latitude, class: "form-control form-control-lg", readonly: "" %>
     </div>
@@ -122,4 +104,6 @@ function setPosition(marker){
 
  <% end %>
  </div>
+ </div>
+ </section>
  <div id="newmap" style="width: 100%; height: 300px;"></div>

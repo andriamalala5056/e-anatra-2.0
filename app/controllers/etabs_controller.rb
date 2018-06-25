@@ -28,7 +28,7 @@ class EtabsController < ApplicationController
   def create
 
     @etab = Etab.new(etab_params)
-    # current_user.etab = @etab
+     @etab.user_id =current_user.id
     if @etab.save
       flash[:success] = "success"
       redirect_to etabs_path
