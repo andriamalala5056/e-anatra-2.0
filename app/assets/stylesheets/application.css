@@ -58,3 +58,12 @@
 
 
 /* DEVISE NOTIFICATION END */
+
+
+
+.shop-thumbnail {
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
