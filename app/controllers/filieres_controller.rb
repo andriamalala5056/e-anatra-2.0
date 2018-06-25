@@ -1,14 +1,19 @@
 class FilieresController < ApplicationController
+  def index
+    @filieres = Filiere.all
+  end
+  
   def new
-   # if user_signed_in? && current_user.role == "responsable"
+   #if user_signed_in? && current_user.role == "responsable"
       
-    #  if current_user.etab   
+      #if current_user.etab[0] != nil   
         @fil = Filiere.new
-     # else
+      #else
+      #  flash[:notice] = "Creer dabord votre etablissement"
       #  redirect_to new_etab_path
-     # end
+      #end
     #else
-     # redirect_to new_user_registration_path
+      #redirect_to new_user_registration_path
     #end
   end
 

@@ -84,11 +84,88 @@
                <li>
                   <a href="<%= etabs_path %>">Trouver son école</a>
                </li>
+
+               <li class="menu-item-has-children">
+                  
+                  <% if user_signed_in? %>
+                        <!-- RESPONSABLE --> 
+                        <% if current_user.role == "responsable" %>  
+                          <a href="#">Responsable</a>
+                          <ul class="sub-menu">
+                            <li class="submenu-item-has-children">
+                              <a href="#">ETABLISSEMENT</a>
+                              <ul class="sub-menu">
+                                <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
+                                <% if current_user.etab != nil %>
+                                  <li><a href="<%= etab_path(current_user.etab.id) %>">Mon etablissement</a></li>
+                                  <li><a href="#">Modifier</a></li>
+                                  <li>
+                                    <a href="<%= new_article_path %>">Créer article</a>
+                                  </li>
+                                <% else %>
+                                  <li><a href="<%= new_etab_path %>">Créez votre établissement</a></li>
+                                <% end %>
+                              </ul>
+                            </li>
+                            <li class="submenu-item-has-children">
+                              <a href="#">FILIERE</a>
+                              <ul class="sub-menu">
+                                <li><a href="<%= filieres_path %>">Tout les filières</a></li>
+                                <% if current_user.etab != nil %>
+                                  <li><a href="<%= etabs_filiere_path(current_user.etab.id) %>">Mes filières</a></li>
+                                  <li><a href="<%= new_etabs_filiere_path %>">Ajouter</a></li>
+                                <% end %>
+                              </ul>
+                            </li>
+                            
+                          </ul>
+                          <!-- ETUDIANT -->
+                        <% else %>
+                          <a href="#">Etudiant</a>
+                          <ul class="sub-menu">
+                            <li class="submenu-item-has-children">
+                              <a href="#">ETABLISSEMENT</a>
+                              <ul class="sub-menu">
+                                <li><a href="#">Tout les établissements</a></li>
+                              </ul>
+                            </li>
+                            <li class="submenu-item-has-children">
+                              <a href="#">FILIERE</a>
+                              <ul class="sub-menu">
+                                <li><a href="#">Tout les filières</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Submenu Item 3</a></li>
+                          </ul>
+                        <% end %>
+                        <% else %>
+                        <a href="#">Visiteur</a>
+                        <ul class="sub-menu">
+                          <li class="submenu-item-has-children">
+                            <a href="#">ETABLISSEMENT</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Tout les établissements</a></li>
+                            </ul>
+                          </li>
+                          <li class="submenu-item-has-children">
+                            <a href="#">FILIERE</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Tout les filières</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">Submenu Item 3</a></li>
+                        </ul>
+                    <%  end %>
+                    <!-- VISITEUR -->
+                
+              </li>
+
+
                <li>
                   <a href="#">Blog</a>
                </li>
                <!--li class="menu-item-has-children">
-                  <a href="index.html#">Pages</a>
+                  <a href="#">Pages</a>
                   <ul class="sub-menu">
                      <li><a href="about.html">About</a></li>
                      <li><a href="contacts.html">Contacts</a></li>
@@ -103,8 +180,13 @@
          <!-- Toolbar -->
          <div class="toolbar">
             <div class="inner">
-               <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
-               <a href="/users/sign_in"><i class="material-icons person"></i></a>
+              <% if user_signed_in? %>  
+              <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <% else %>
+                <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+                <a href="/users/sign_in"><i class="material-icons person"></i></a>
+              <% end %>
             </div>
             <!-- .inner -->
          </div>

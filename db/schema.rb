@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_070847) do
+ActiveRecord::Schema.define(version: 2018_06_25_115934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_06_23_070847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.bigint "etab_id"
+    t.index ["etab_id"], name: "index_articles_on_etab_id"
   end
 
   create_table "etabs", force: :cascade do |t|
@@ -39,22 +41,38 @@ ActiveRecord::Schema.define(version: 2018_06_23_070847) do
     t.index ["user_id"], name: "index_etabs_on_user_id"
   end
 
-  create_table "etabs_filieres", id: false, force: :cascade do |t|
-    t.bigint "etab_id", null: false
-    t.bigint "filiere_id", null: false
-    t.index ["etab_id", "filiere_id"], name: "index_etabs_filieres_on_etab_id_and_filiere_id"
-    t.index ["filiere_id", "etab_id"], name: "index_etabs_filieres_on_filiere_id_and_etab_id"
+  create_table "etabs_filieres", force: :cascade do |t|
+    t.bigint "filiere_id"
+    t.bigint "etab_id"
+    t.bigint "niveau_id"
+    t.integer "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["etab_id"], name: "index_etabs_filieres_on_etab_id"
+    t.index ["filiere_id"], name: "index_etabs_filieres_on_filiere_id"
+    t.index ["niveau_id"], name: "index_etabs_filieres_on_niveau_id"
   end
 
   create_table "filieres", force: :cascade do |t|
-    t.string "filiere_name"
+    t.string "filiere"
   end
 
-  create_table "filieres_niveaus", id: false, force: :cascade do |t|
-    t.bigint "filiere_id", null: false
-    t.bigint "niveau_id", null: false
-    t.index ["filiere_id", "niveau_id"], name: "index_filieres_niveaus_on_filiere_id_and_niveau_id"
-    t.index ["niveau_id", "filiere_id"], name: "index_filieres_niveaus_on_niveau_id_and_filiere_id"
+  create_table "inscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "etab_id"
+    t.bigint "vague_id"
+    t.bigint "filiere_id"
+    t.bigint "niveau_id"
+    t.boolean "valide", default: false
+    t.boolean "delai", default: true
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["etab_id"], name: "index_inscriptions_on_etab_id"
+    t.index ["filiere_id"], name: "index_inscriptions_on_filiere_id"
+    t.index ["niveau_id"], name: "index_inscriptions_on_niveau_id"
+    t.index ["user_id"], name: "index_inscriptions_on_user_id"
+    t.index ["vague_id"], name: "index_inscriptions_on_vague_id"
   end
 
   create_table "mailings", force: :cascade do |t|
@@ -107,5 +125,24 @@ ActiveRecord::Schema.define(version: 2018_06_23_070847) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vagues", force: :cascade do |t|
+    t.date "debut_session"
+    t.date "fin_session"
+    t.bigint "etab_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["etab_id"], name: "index_vagues_on_etab_id"
+  end
+
+  add_foreign_key "articles", "etabs"
   add_foreign_key "etabs", "users"
+  add_foreign_key "etabs_filieres", "etabs"
+  add_foreign_key "etabs_filieres", "filieres"
+  add_foreign_key "etabs_filieres", "niveaus"
+  add_foreign_key "inscriptions", "etabs"
+  add_foreign_key "inscriptions", "filieres"
+  add_foreign_key "inscriptions", "niveaus"
+  add_foreign_key "inscriptions", "users"
+  add_foreign_key "inscriptions", "vagues"
+  add_foreign_key "vagues", "etabs"
 end
