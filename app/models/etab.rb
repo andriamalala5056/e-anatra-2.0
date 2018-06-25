@@ -11,11 +11,13 @@ class Etab < ApplicationRecord
 	has_many :vagues
 
 	has_many :inscriptions    
-	#has_many :user, through: :inscriptions
+	#has_many :user, through: :inscriptions 
+
+	belongs_to :province
 
 	def self.search(term)
 		if term
-		  where('nom_etab LIKE ?', "%#{term}%").order('id DESC')
+		  where('lower(nom_etab) LIKE ?', "%#{term.downcase}%").order('id DESC')
 		else
 		  order('id DESC') 
 		end
