@@ -35,28 +35,6 @@
         <%= f.text_area :description, class: "form-control form-control-lg text-editor" %>
     </div>
 
-    <hr/>
-    
-    <div class="form-group">
-        <label>Provinces</label>
-        <% @provinces.each do |province| %>
-            <input id="<%= province.province_name.downcase %>" name="<%= province.province_name.downcase %>" type="checkbox" value="<%= province.province_name %>" />
-            <label for="<%= province.province_name.downcase %>"><%= province.province_name %></label>
-        <% end %>
-    </div>
-
-    <hr/>
-
-    <div class="form-group">
-        <label>Filières</label>
-        <% @filieres.each do |filiere| %>
-            <input id="<%= filiere.filiere_name.downcase %>" name="<%= filiere.filiere_name.downcase %>" type="checkbox" value="<%= filiere.filiere_name %>" />
-            <label for="<%= filiere.filiere_name.downcase %>"><%= filiere.filiere_name %></label>
-        <% end %>
-    </div>
-
-    <hr/>
-
     <div class="form-group">
         <label>Latitude</label>
         <%= f.text_field :latitude, class: "form-control form-control-lg", readonly: "" %>
