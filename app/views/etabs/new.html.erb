@@ -1,52 +1,5 @@
 
-<script type="text/javascript">
-$(function(){
-    // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(-18.906551790567445, 47.51344915311279)
-
-    var map = new google.maps.Map(document.getElementById('newmap'),{
-        zoom : 18,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    // Initialisation du marker
-    var marker = new google.maps.Marker({
-        position : latlng,
-        map : map,
-        title : 'Bougez ce marqueur',
-        draggable : true
-    });
-
-    // Initialisation du geocoder
-    var geocoder = new google.maps.Geocoder();
-
-    google.maps.event.addListener(marker, 'drag', function(){
-        setPosition(marker);
-    });
-
-    $('#address').keypress(function(e){
-        if(e.keyCode == 13){
-            var request = {
-                address : $(this).val()
-            }
-            geocoder.geocode(request, function(results, status){
-                if(status == google.maps.GeocoderStatus.OK){
-                    map.setCenter(results[0].geometry.location);
-                }
-            });
-            return false;
-        }
-    });
-
-});
-
-function setPosition(marker){
-    var pos = marker.getPosition();
-    $('#latitude').val(pos.lat());
-    $('#longitude').val(pos.lng());
-};
-</script>
+ <script src="/js/newmap.js"></script>
 <section class="container-fluid padding-top-3x">
    <!-- .row -->
    <div class="row padding-top">
@@ -55,12 +8,16 @@ function setPosition(marker){
 
     <div class="form-group">
         <label for="province">Province</label>
-        <%= f.collection_select :province_id, Province.order(:province_name), :id, :province_name, include_blank: true %>
+        <%= f.collection_select :province_id, Province.order(:province_name), :id, :province_name, include_blank: true, class: "form-control form-control-lg" %>
     </div>
 
     <div class="form-group">
-        <label>Image représentant votre établissement</label><br>
-        <%= f.file_field :image %>
+        <label for="image">Photo représentant votre établissement</label>
+        <div class="input-file-container">
+        <%= f.file_field :image, autofocus: true, class: "input-file" %>
+        <label tabindex="0" for="image" class="input-file-trigger">Importer une photo...</label>
+        </div>
+        <p class="file-return"></p>
     </div>
 
     <div class="form-group">
@@ -111,4 +68,26 @@ function setPosition(marker){
  </div>
  </div>
  </section>
- <div id="newmap" style="width: 100%; height: 300px;"></div>
+ <div id="newmap" style="width: 100%; height: 400px;"></div>
+
+ <!-- Script js pour l'upload file -->
+ <script>
+document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  
+</script>

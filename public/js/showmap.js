@@ -1,12 +1,10 @@
-<h1><%= @etab.nom_etab %></h1>
-<div id="showmap" style="width: 100%; height: 400px;"></div>
-<script type="text/javascript">
 $(function(){
     // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
+    // <% @etablissement.latitude %>,<% @etablissement.longitude %>,
+    var latlng = new google.maps.LatLng(-18.90910, 47.52857)
 
     var map = new google.maps.Map(document.getElementById('showmap'),{
-        zoom : 18,
+        zoom : 10,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -15,7 +13,7 @@ $(function(){
     var marker = new google.maps.Marker({
         position : latlng,
         map : map,
-        title : "#{@etab.nom_etab}, siège : #{@etab.address}",
+        title : 'Bougez ce curseur',
         draggable : false
     });
 
@@ -26,7 +24,7 @@ $(function(){
         setPosition(marker);
     });
 
-    $('#address').keypress(function(e){
+    $('#adresse').keypress(function(e){
         if(e.keyCode == 13){
             var request = {
                 address : $(this).val()
@@ -44,7 +42,6 @@ $(function(){
 
 function setPosition(marker){
     var pos = marker.getPosition();
-    $('#latitude').val(pos.lat());
-    $('#longitude').val(pos.lng());
+    $('#lat').val(pos.lat());
+    $('#lng').val(pos.lng());
 };
-</script>

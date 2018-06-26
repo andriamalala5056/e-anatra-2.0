@@ -1,12 +1,10 @@
-<h1><%= @etab.nom_etab %></h1>
-<div id="showmap" style="width: 100%; height: 400px;"></div>
-<script type="text/javascript">
 $(function(){
     // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
+    // <% @etablissement.latitude %>,<% @etablissement.longitude %>,
+    var latlng = new google.maps.LatLng(-18.906551790567445, 47.51344915311279)
 
-    var map = new google.maps.Map(document.getElementById('showmap'),{
-        zoom : 18,
+    var map = new google.maps.Map(document.getElementById('newmap'),{
+        zoom : 10,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -15,8 +13,8 @@ $(function(){
     var marker = new google.maps.Marker({
         position : latlng,
         map : map,
-        title : "#{@etab.nom_etab}, siège : #{@etab.address}",
-        draggable : false
+        title : 'Bougez ce curseur',
+        draggable : true
     });
 
     // Initialisation du geocoder
@@ -33,7 +31,10 @@ $(function(){
             }
             geocoder.geocode(request, function(results, status){
                 if(status == google.maps.GeocoderStatus.OK){
-                    map.setCenter(results[0].geometry.location);
+                    var pos = results[0].geometry.location;
+                    map.setCenter(pos);
+                    marker.setPosition(pos);
+                    setPosition(marker);
                 }
             });
             return false;
@@ -44,7 +45,6 @@ $(function(){
 
 function setPosition(marker){
     var pos = marker.getPosition();
-    $('#latitude').val(pos.lat());
-    $('#longitude').val(pos.lng());
+    $('#latitude').val(pos.lat()); //#latitude c'est l'id du champs latitude sur le formulaire
+    $('#longitude').val(pos.lng()); //#longitude c'est l'id du champs longitude sur le formulaire
 };
-</script>
