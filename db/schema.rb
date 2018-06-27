@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_183111) do
+ActiveRecord::Schema.define(version: 2018_06_27_073531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,9 +70,11 @@ ActiveRecord::Schema.define(version: 2018_06_25_183111) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "province_id"
     t.index ["etab_id"], name: "index_inscriptions_on_etab_id"
     t.index ["filiere_id"], name: "index_inscriptions_on_filiere_id"
     t.index ["niveau_id"], name: "index_inscriptions_on_niveau_id"
+    t.index ["province_id"], name: "index_inscriptions_on_province_id"
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
     t.index ["vague_id"], name: "index_inscriptions_on_vague_id"
   end
@@ -145,6 +147,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_183111) do
   add_foreign_key "inscriptions", "etabs"
   add_foreign_key "inscriptions", "filieres"
   add_foreign_key "inscriptions", "niveaus"
+  add_foreign_key "inscriptions", "provinces"
   add_foreign_key "inscriptions", "users"
   add_foreign_key "inscriptions", "vagues"
   add_foreign_key "vagues", "etabs"
