@@ -186,7 +186,10 @@
               <a href="index.html#" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
 
               <% if user_signed_in? %>
-                <a href="#"><i class="material-icons check_circle"></i></a>
+                <!--a href="#"><i class="material-icons check_circle"></i></a-->
+                <a href="/users/edit">
+                  <%= image_tag(current_user.image.thumb.url, class: "user-profile") %>
+                </a>
                 <div class="cart-btn">
                   <%= link_to "", destroy_user_session_path, method: :delete, class: "material-icons remove_circle" %>
                 </div><!-- .cart-btn -->

@@ -76,3 +76,8 @@
 .high-z-index {
   z-index: 4;
 }
+
+.user-profile {
+  border-radius: 25px;
+  margin-left: 10px;
+}
