@@ -40,6 +40,14 @@ class EtabsController < ApplicationController
   end
 
   def update
+    @etab.update(etab_params)
+    if @etab
+      flash[:success] = "Modifié avec succès"
+      redirect_to etabs_path
+    else
+      flash[:notice] = "Il y a peut-être un erreur"
+      render "edit"
+    end
   end
 
   def show
