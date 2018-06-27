@@ -34,6 +34,14 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article.update(article_params)
+    if @article
+      flash[:success] = "Modifié avec succès"
+      redirect_to articles_path
+    else
+      flash[:notice] = "Il y a peut-être un erreur"
+      render "edit"
+    end
   end
 
   def show
