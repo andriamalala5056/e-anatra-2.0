@@ -2,12 +2,9 @@ class EtabsController < ApplicationController
   before_action :get_id, only: [:show, :edit, :update, :destroy]
 
   def index
+    # L'index affiche par défaut la liste des établissements en ordre décroissant c-à-d
+    # La plus récent au plus anciens sauf si le visiteur a entré un critère dans le champs de recherche
     @etab = Etab.search(params[:term])
-    # @etab = if params[:term]
-    #   Etab.where('nom_etab LIKE ?', "%#{params[:term]}%")
-    # else
-    #   Etab.all
-    # end
   end
 
   def new
@@ -29,7 +26,8 @@ class EtabsController < ApplicationController
 
     @etab = Etab.new(etab_params)
      @etab.user_id =current_user.id
-     @etab.province = Province.find(params[:etab][:province_id])
+    #  @etab.province = Province.find(params[:etab][:province_id])
+     @etab.province = Province.find(params[:province])
     if @etab.save
       flash[:success] = "success"
       redirect_to etabs_path
@@ -45,7 +43,6 @@ class EtabsController < ApplicationController
   end
 
   def show
-    @etab = Etab.find(params[:id])
   end
 
   def destroy
