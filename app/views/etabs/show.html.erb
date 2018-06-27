@@ -213,7 +213,20 @@
 <script type="text/javascript">
 $(function(){
     // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
+    var lat = -18.906551790567445;
+    var lng = 47.51344915311279;
+    
+    <% if @etab.latitude.nil? %>
+        latitude = lat
+    <% else %>
+        latitude = <%= @etab.latitude %>
+    <% end %>,
+    <% if @etab.longitude.nil? %>
+        longitude = lng
+    <% else %>
+        longitude = <%= @etab.longitude %>
+    <% end %>
+    var latlng = new google.maps.LatLng(latitude, longitude)
 
     var map = new google.maps.Map(document.getElementById('showmap'),{
         zoom : 18,
@@ -243,7 +256,10 @@ $(function(){
             }
             geocoder.geocode(request, function(results, status){
                 if(status == google.maps.GeocoderStatus.OK){
-                    map.setCenter(results[0].geometry.location);
+                    var pos = results[0].geometry.location;
+                    map.setCenter(pos);
+                    marker.setPosition(pos);
+                    setPosition(marker);
                 }
             });
             return false;
