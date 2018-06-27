@@ -178,18 +178,33 @@
 
          <!-- .main-navigation -->
          <!-- Toolbar -->
-         <div class="toolbar">
+          <div class="toolbar">
             <div class="inner">
-              <% if user_signed_in? %>  
-              <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
-                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <a href="index.html#" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+
+              <% if user_signed_in? %>
+                <a href="#"><i class="material-icons check_circle"></i></a>
+                <div class="cart-btn">
+                  <!--%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %-->
+                  <a data-method="delete" href="<%= destroy_user_session_path %>">
+                    <i>
+                      <span class="material-icons remove_circle"></span>
+                    </i>
+                  </a>
+                </div><!-- .cart-btn -->
               <% else %>
-                <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
                 <a href="/users/sign_in"><i class="material-icons person"></i></a>
+                <div class="cart-btn">
+                  <a href="/users/sign_up">
+                    <i>
+                      <span class="material-icons person_add"></span>
+                    </i>
+                  </a>
+                </div><!-- .cart-btn -->
               <% end %>
-            </div>
-            <!-- .inner -->
-         </div>
+
+            </div><!-- .inner -->
+          </div>
          <!-- .toolbar -->
     </header>
     <!-- .navbar.navbar-sticky -->
