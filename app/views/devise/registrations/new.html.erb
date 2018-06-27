@@ -43,7 +43,7 @@
                         <div class="form-element">
                           <label for="role">Type du compte</label>
                             <div class="form-element form-select">
-                               <%= f.select(:role, options_for_select([['Etudiant', 'etudiant'], ['Responsable', 'responsable']]), class: "form-control") %>
+                               <%= f.select(:role, options_for_select([['Etudiant', 'etudiant'], ['Responsable', 'responsable']]), {}, class: "form-control form-control-lg") %>
                             </div>
                          </div>
                       </div>
@@ -64,10 +64,12 @@
                    </div>
                    <div class="row">
                       <div class="col-sm-6">
-                         <div class="form-elemen form-select">
-                            <label for="sex">Sexe</label>
-                            <%= f.select(:sex, options_for_select([['Homme', 'male'],['Femme','female']]), class: "form-control") %>
-                         </div>
+                        <div class="form-element">
+                          <label for="sex">Sexe</label>
+                          <div class="form-element form-select">
+                              <%= f.select(:sex, options_for_select([['Homme', 'male'], ['Femme','female']]), {}, class: "form-control form-control-lg") %>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-sm-6">
                          <div class="form-element">

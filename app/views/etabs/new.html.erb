@@ -8,7 +8,13 @@
 
     <div class="form-group">
         <label for="province">Province</label>
-        <%= f.collection_select :province_id, Province.order(:province_name), :id, :province_name, include_blank: true, class: "form-control form-control-lg" %>
+        <div class="form-element form-select">
+        <select name="province" id="province" class="form-control form-control-lg">
+            <% Province.all.each do |province| %>
+                <option value="<%= province.id %>"><%= province.province_name %></option>
+            <% end %>
+        </select>
+        </div>
     </div>
 
     <div class="form-group">
