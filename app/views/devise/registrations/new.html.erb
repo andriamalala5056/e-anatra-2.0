@@ -188,4 +188,20 @@ button.addEventListener( "click", function( event ) {
 fileInput.addEventListener( "change", function( event ) {  
     the_return.innerHTML = this.value;  
 });  
+
+    var phone = document.getElementById("phone");
+    phone.onkeydown = function(){
+      
+      chiffres = new String(phone.value);
+      chiffres = chiffres.replace(/[^0-9]/g, '');
+      if ( chiffres.length == 9){
+        phone.style.borderColor = "blue" ;
+        console.log(chiffres);
+      }
+    else  {
+      console.log(chiffres);
+      phone.style.borderColor = "red";
+     }
+    };
+    
 </script>
