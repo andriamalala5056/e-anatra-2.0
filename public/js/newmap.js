@@ -45,6 +45,6 @@ $(function(){
 
 function setPosition(marker){
     var pos = marker.getPosition();
-    $('#latitude').val(pos.lat()); //#latitude c'est l'id du champs latitude sur le formulaire
-    $('#longitude').val(pos.lng()); //#longitude c'est l'id du champs longitude sur le formulaire
+    $('#etab_latitude').val(pos.lat()); //#latitude c'est l'id du champs latitude sur le formulaire
+    $('#etab_longitude').val(pos.lng()); //#longitude c'est l'id du champs longitude sur le formulaire
 };
