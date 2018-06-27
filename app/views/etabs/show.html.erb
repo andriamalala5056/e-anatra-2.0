@@ -1,11 +1,234 @@
-<h1><%= @etab.nom_etab %></h1>
+<!-- Pager + Product Gallery -->
+<section class="fw-section bg-gray">
 
+<div class="show-etab-img" style="background-image:url(<%= @etab.image.url %>)">
+</div>
+</section><!-- .fw-section.bg-gray -->
+
+<!-- Product Info -->
+<section class="fw-section bg-gray padding-bottom-3x">
+  <div class="container">
+    <div class="product-info padding-top-2x text-center">
+      <h1 class="h2 space-bottom-half"><%= @etab.nom_etab %> (<%= @etab.address %>)</h1>
+      <p class="text-sm text-gray"><%= @etab.description %></p>
+      <div class="product-meta">
+        <div class="product-sku">
+          <strong>Catégorie: <%= @etab.category %> </strong>
+        </div>
+        <div class="product-category">
+          <strong>Contact: <%= @etab.phone_number %></strong>
+        </div>
+        <div class="product-category">
+          <strong>Email: <a href="mailto:<%= @etab.email %>"> <%= @etab.email %></a></strong>
+        </div>
+      </div><!-- .product-meta -->
+      
+      <div class="product-share">
+        <span>Partager sur: </span>
+        <div class="social-bar">
+          <a href="#" class="sb-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+            <i class="socicon-facebook"></i>
+          </a>
+          <a href="#" class="sb-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+            <i class="socicon-twitter"></i>
+          </a>
+          <a href="#" class="sb-instagram" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+            <i class="socicon-instagram"></i>
+          </a>
+        </div>
+      </div><!-- .product-share -->
+    </div><!-- .product-info -->
+  </div><!-- .container -->
+</section><!-- .fw-section.bg-gray -->
+
+<!-- Product Tabs -->
+<section class="container padding-top-2x">
+  <!-- Nav Tabs -->
+  <ul class="nav-tabs text-center" role="tablist">
+    <li class="active"><a href="#plus" role="tab" data-toggle="tab">Plus d'info sur <%= @etab.nom_etab %></a></li>
+    <li><a href="#map" role="tab" data-toggle="tab">Situation géographique</a></li>
+  </ul><!-- .nav-tabs -->
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane transition fade in active" id="plus">
+      <!--div class="row space-top">
+        <div class="col-md-6 space-bottom">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://player.vimeo.com/video/105829213?color=77cde3&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic totam, tempore quos dicta voluptate tempora ex voluptatum amet, veniam assumenda magnam eveniet eius reiciendis, ab necessitatibus quis iure libero.</p>
+          <p>Alias commodi aspernatur quo illo dolor voluptatem animi ipsum laudantium similique blanditiis, molestias facilis vitae harum minima obcaecati corrupti quibusdam minus modi.</p>
+        </div>
+      </div-->
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table-no-border">
+            <tr>
+              <th>Catégorie</th>
+              <td><%= @etab.category %></td>
+            </tr>
+            <tr>
+              <th>Adresse</th>
+              <td><%= @etab.address %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table-no-border">
+            <tr>
+              <th>Email</th>
+              <td><a href="mailto:<%= @etab.email %>"> <%= @etab.email %></a></td>
+            </tr>
+            <tr>
+              <th>Téléphone</th>
+              <td><%= @etab.phone_number %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div><!-- .tab-pane -->
+    <div role="tabpanel" class="tab-pane transition fade" id="map">
+      <div class="row">
+        <div class="col-md-12">
+          Map container
+        </div>
+      </div>
+    </div><!-- .tab-pane -->
+  </div><!-- .tab-content -->
+</section><!-- .container -->
+
+<!-- Related Products -->
+<section class="container padding-top padding-bottom">
+  <hr>
+  <h3 class="padding-top">Voir également</h3>
+  <div class="row padding-top">
+    <div class="col-lg-3 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail">
+          <span class="shop-label text-danger">Sale</span>
+          <a href="shop-single.html#" class="item-link"></a>
+          <img src="/img/shop/th05.jpg" alt="Shop item">
+          <div class="shop-item-tools">
+            <a href="shop-single.html#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+            <a href="shop-single.html#" class="add-to-cart">
+              <em>Add to Cart</em>
+              <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html#">Wall Clock</a></h3>
+          <span class="shop-item-price">
+            <span class="old-price">$69.00</span>
+            $48.00
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-lg-3.col-sm-6 -->
+    <div class="col-lg-3 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.html#" class="item-link"></a>
+          <img src="/img/shop/th06.jpg" alt="Shop item">
+          <div class="shop-item-tools">
+            <a href="shop-single.html#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+            <a href="shop-single.html#" class="add-to-cart">
+              <em>Add to Cart</em>
+              <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html#">LED Lighting</a></h3>
+          <span class="shop-item-price">
+            $130.00
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-lg-3.col-sm-6 -->
+    <div class="col-lg-3 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.html#" class="item-link"></a>
+          <img src="/img/shop/th04.jpg" alt="Shop item">
+          <div class="shop-item-tools">
+            <a href="shop-single.html#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+            <a href="shop-single.html#" class="add-to-cart">
+              <em>Add to Cart</em>
+              <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html#">Alarm Clock</a></h3>
+          <span class="shop-item-price">
+            $178.00
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-lg-3.col-sm-6 -->
+    <div class="col-lg-3 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail">
+          <a href="shop-single.html#" class="item-link"></a>
+          <img src="/img/shop/th08.jpg" alt="Shop item">
+          <div class="shop-item-tools">
+            <a href="shop-single.html#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+            <a href="shop-single.html#" class="add-to-cart">
+              <em>Add to Cart</em>
+              <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html#">Hook Basket</a></h3>
+          <span class="shop-item-price">
+            $112.35
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-lg-3.col-sm-6 -->
+  </div><!-- .row -->
+</section><!-- .container -->
+
+<div id="showmap" style="width: 100%; height: 400px;"></div>
 <script type="text/javascript">
 $(function(){
     // On va remplacer dynamiquement la latitude et longitude
-    var latlng = new google.maps.LatLng(<%= @etab.latitude || '-18.906551790567445' %>, <%= @etab.longitude || '47.51344915311279' %>)
+    var lat = -18.906551790567445;
+    var lng = 47.51344915311279;
+    
+    <% if @etab.latitude.nil? %>
+        latitude = lat
+    <% else %>
+        latitude = <%= @etab.latitude %>
+    <% end %>,
+    <% if @etab.longitude.nil? %>
+        longitude = lng
+    <% else %>
+        longitude = <%= @etab.longitude %>
+    <% end %>
+    var latlng = new google.maps.LatLng(latitude, longitude)
 
-    var map = new google.maps.Map(document.getElementById('new_map'),{
+    var map = new google.maps.Map(document.getElementById('showmap'),{
         zoom : 18,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -33,7 +256,10 @@ $(function(){
             }
             geocoder.geocode(request, function(results, status){
                 if(status == google.maps.GeocoderStatus.OK){
-                    map.setCenter(results[0].geometry.location);
+                    var pos = results[0].geometry.location;
+                    map.setCenter(pos);
+                    marker.setPosition(pos);
+                    setPosition(marker);
                 }
             });
             return false;

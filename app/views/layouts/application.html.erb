@@ -33,12 +33,17 @@
     <link href="/css/theme.min.css" rel="stylesheet" media="screen">
 
     <link rel="stylesheet" href="/imput_file/css/style.css">
+    
+    <!-- Google map -->
+		<link rel="stylesheet" href="/css/maps.css">
 
     <!-- Page Preloading -->
+    d
     <script src="/js/vendor/page-preloading.js"></script>
 
     <!-- Modernizr -->
     <script src="/js/vendor/modernizr.custom.js"></script>
+
   </head>
 
   <body class="page-preloading">
@@ -93,12 +98,12 @@
                           <a href="#">Responsable</a>
                           <ul class="sub-menu">
                             <li class="submenu-item-has-children">
-                              <a href="#">ETABLISSEMENT</a>
+                              <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                               <ul class="sub-menu">
                                 <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
                                 <% if current_user.etab != nil %>
                                   <li><a href="<%= etab_path(current_user.etab.id) %>">Mon etablissement</a></li>
-                                  <li><a href="#">Modifier</a></li>
+                                  <li><a href="<%= edit_etab_path(current_user.etab.id) %>">Modifier</a></li>
                                   <li>
                                     <a href="<%= new_article_path %>">Créer article</a>
                                   </li>
@@ -108,7 +113,7 @@
                               </ul>
                             </li>
                             <li class="submenu-item-has-children">
-                              <a href="#">FILIERE</a>
+                              <a href="<%= filieres_path %>">FILIERE</a>
                               <ul class="sub-menu">
                                 <li><a href="<%= filieres_path %>">Tout les filières</a></li>
                                 <% if current_user.etab != nil %>
@@ -178,18 +183,31 @@
 
          <!-- .main-navigation -->
          <!-- Toolbar -->
-         <div class="toolbar">
+          <div class="toolbar">
             <div class="inner">
-              <% if user_signed_in? %>  
-              <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
-                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <a href="index.html#" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+
+              <% if user_signed_in? %>
+                <!--a href="#"><i class="material-icons check_circle"></i></a-->
+                <a href="/users/edit">
+                  <%= image_tag(current_user.image.thumb.url, class: "user-profile") %>
+                </a>
+                <div class="cart-btn">
+                  <%= link_to "", destroy_user_session_path, method: :delete, class: "material-icons remove_circle" %>
+                </div><!-- .cart-btn -->
               <% else %>
-                <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
                 <a href="/users/sign_in"><i class="material-icons person"></i></a>
+                <div class="cart-btn">
+                  <a href="/users/sign_up">
+                    <i>
+                      <span class="material-icons person_add"></span>
+                    </i>
+                  </a>
+                </div><!-- .cart-btn -->
               <% end %>
-            </div>
-            <!-- .inner -->
-         </div>
+
+            </div><!-- .inner -->
+          </div>
          <!-- .toolbar -->
     </header>
     <!-- .navbar.navbar-sticky -->
