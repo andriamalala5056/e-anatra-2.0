@@ -1,5 +1,6 @@
 class MailingController < ApplicationController
   def index
+  
     @message_mailing = Mailing.last
     @destinataires = Newsletter.all
     # message = {}
@@ -10,10 +11,13 @@ class MailingController < ApplicationController
     # ContactMailer.contact(message).deliver_now
     @destinataires.each do |destinataire|
       ContactMailer.contact(destinataire, Mailing.last).deliver_now
-    end
+
+      end
+  
   end
 
   def new
+    
     @mailing = Mailing.new
   end
 
