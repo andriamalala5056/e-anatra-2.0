@@ -1,2 +1,4 @@
-<h1>Article#show</h1>
-<p>Find me in app/views/article/show.html.erb</p>
+<h1><%= @article.titre %></h1>
+<div class="show-etab-img" style="background-image:url(<%= @article.image.url %>)">
+</div>
+<%= @article.description %>
