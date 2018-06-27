@@ -27,7 +27,7 @@ class EtabsController < ApplicationController
     @etab = Etab.new(etab_params)
      @etab.user_id =current_user.id
     #  @etab.province = Province.find(params[:etab][:province_id])
-     @etab.province = Province.find(params[:province])
+    # @etab.province = Province.find(params[:province])
     if @etab.save
       flash[:success] = "success"
       redirect_to etabs_path

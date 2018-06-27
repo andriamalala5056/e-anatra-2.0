@@ -9,4 +9,10 @@ class ContactMailer < ApplicationMailer
         # :body => message[:message]#message[:body]
         mail(to: "#{@destinataire.email}", subject:"#{@message.subject}")
     end
+
+    def subscription(responsable)
+        @responsable = responsable
+        mail(to: @responsable,subject:"nouvelle inscription")
+        
+    end
 end
