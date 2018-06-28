@@ -30,3 +30,4 @@ filiere7 = Filiere.create(filiere:"Télécommunication")
 filiere8 = Filiere.create(filiere:"Paramed")
 filiere10 = Filiere.create(filiere:"Agronomie")
 
+newsletter1 = Newsletter.create("andry", "haja", "andry@gmail.com")

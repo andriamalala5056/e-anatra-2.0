@@ -81,3 +81,7 @@
   border-radius: 25px;
   margin-left: 10px;
 }
+
+.profile_photo_show {
+  max-width: 200px;
+}
