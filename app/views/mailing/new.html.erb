@@ -1,6 +1,15 @@
 <div class="container">
 <%= form_for @mailing, url: mailing_index_path, html: {class: "form"} do |f| %>
     <div class="form-group">
+        <label for="image">Pièce-jointe</label>
+        <div class="input-file-container">
+            <%= f.file_field :fichier, autofocus: true, class: "input-file" %>
+            <label tabindex="0" for="fichier" class="input-file-trigger">Importer une fichier...</label>
+        </div>
+        <p class="file-return"></p>
+    </div>
+
+    <div class="form-group">
         <label for="subject">Sujet de l'email</label>
         <input type="text" name="subject" id="subject" class="form-control form-control-lg"/>
     </div>
