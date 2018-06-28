@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :inscriptions
   resources :etabs_filieres
   get 'newsletter/index'
   get 'newsletter/new'
