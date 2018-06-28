@@ -1,6 +1,6 @@
 <h1>Bonjour, <%= @destinataire.firstname %></h1>
 <h3>Vous avez souscrit sur notre newsletter, alors, voici la nouvelle :</h3>
 <p>Chère <%= @destinataire.firstname %>, </p>
-<p><%= @message.message</p>
+<p><%= @message.message.html_safe %></p>
 <p>Pour accéder à notre site,</p>
 <%= link_to "Voir le site", root_url %>

@@ -85,3 +85,7 @@
 .marge-30px {
   margin-bottom: 176px;
 }
+
+.profile_photo_show {
+  max-width: 200px;
+}
