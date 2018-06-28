@@ -14,7 +14,7 @@ Avec la fonctionnalité Google map ils pourront entrer leur coordonnées pour pe
 
 ************************ ANDRY
 
-Notre bot twitter permet de poster des tweet à fin de publier des publicité et d'augmenter ainsi la visibilité du site et l'établissement aussi. Avec le bot twitter, on peut récupérer des followers d'envoyer un message privé à des utilisateurs qui nous follow.
+Notre bot twitter permet de poster des tweet à fin de publier des publicités et d'augmenter ainsi la visibilité du site et l'établissement aussi. Avec le bot twitter, on peut récupérer des followers d'envoyer un message privé à des utilisateurs qui nous follow.
 Quand à la newsletter, en fait quand l'utilisateur veux souscrire à un newsletter, que ce soit le responsable de l'établissement ou un utilisateur simple, il va cliquer sur le bouton "Souscrire au newsletter", puis le site va demander à l'utilisateur de rentrer ses informations (nom, prénom, email) et valider, notre site va enregistrer ces informations là dans notre base de données. Et quand il y aura du nouveau, ces utilisateurs-là vont recevoir dans leur boîte email des messages.
 Le site est responsive, il est consultable sur mobile et tablette en outre des ordinateurs.
 
