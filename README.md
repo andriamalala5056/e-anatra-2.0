@@ -29,4 +29,7 @@ Mettre des points d’accès internet dans les universités et cybercafé pour l
 *********************FETRA
 langage utilisé : ruby
 framework : rails
-on a utilisé Github pour gerer le travail en équipe.
+
+Il permet le développement très rapide d’application web. L’avantage majeur de Ruby on Rails est donc sa productivité élevée.
+
+On a utilisé Github pour gerer le travail en équipe.
