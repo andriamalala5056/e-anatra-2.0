@@ -10,9 +10,13 @@ class ContactMailer < ApplicationMailer
         mail(to: "#{@destinataire.email}", subject:"#{@message.subject}")
     end
 
-    def subscription(responsable)
+    def new_subscription(responsable)
         @responsable = responsable
-        mail(to: @responsable,subject:"nouvelle inscription")
+        mail(to: "#{@responsable}", subject:"nouvelle inscription")
         
+    end
+    def inscrit(etudiant)
+        @etudiant = etudiant
+        mail(to: "#{@etudiant}", subject:"inscription reussi")
     end
 end

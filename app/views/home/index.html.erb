@@ -599,30 +599,6 @@
             <!-- #onsale -->
 
             <div role="tabpanel" class="tab-pane transition fade scale" id="onsale">
-            <% @etab.each do |etab| %>
-              <div class="row">
-                        
-
-              <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="shop-item">
-                <div class="shop-thumbnail" style="background-image:url(<%= etab.image.url %>)">
-                  <span class="shop-label text-danger"><%= etab.category %></span>
-                  <a href="<%= etab_path(etab.id) %>" class="item-link"></a>
-                  <div class="shop-item-tools">
-                    <a href="<%= etab_path(etab.id) %>" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
-                      <i class="material-icons favorite_border"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="shop-item-details">
-                  <h3 class="shop-item-title"><a href="shop-single.html"><%= etablissement.nom_etab %></a></h3>
-                  <span class="shop-item-price">
-                    <%= etab.address %>
-                  </span>
-                </div>
-              </div><!-- .shop-item -->
-            </div><!-- .col-md-4.col-sm-6 -->
-            <% end %>
             
           </div><!-- .row -->
           <hr>

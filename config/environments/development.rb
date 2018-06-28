@@ -60,19 +60,19 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Configuration mailer de DEVISE
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'localhost',
-    port:                 1025,
-    domain:               'localhost'
-  }
+  config.action_mailer.default_url_options = { host: 'e-anatra.herokuapp.com' }
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
-  #   port:                 587,
-  #   user_name:            'andryha@gmail.com',
-  #   password:             'andry15212274',#'admineanatra2018',
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true }
+  #   address:              'localhost',
+  #   port:                 1025,
+  #   domain:               'localhost'
+  # }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    user_name:            'harinjatovo.fetra@gmail.com',
+    password:             'fetra0011',#'admineanatra2018',
+    authentication:       'plain',
+    enable_starttls_auto: true }
 end

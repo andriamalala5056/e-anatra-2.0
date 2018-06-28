@@ -61,6 +61,8 @@ class InscriptionsController < ApplicationController
             
             if inscri.save
                 flash[:success]= "Félicitation, vous êtes inscrit!"
+                ContactMailer.new_subscription(@etab.user.email).deliver_now
+                ContactMailer.inscrit(current_user.email).deliver_now
                 redirect_to satusE_path(current_user.id)
             else
                 flash[:error] = "Erreur lors d'inscription! Champ invalid peut être"
