@@ -14,14 +14,15 @@ Avec la fonctionnalité Google map ils pourront entrer leur coordonnées pour pe
 
 ************************ ANDRY
 
-Notre bot twitter et la newsletter nous permettent de ?
+Notre bot twitter permet de poster des tweet à fin de publier des publicité et d'augmenter ainsi la visibilité du site et l'établissement aussi. Avec le bot twitter, on peut récupérer des followers d'envoyer un message privé à des utilisateurs qui nous follow.
+Quand à la newsletter, en fait quand l'utilisateur veux souscrire à un newsletter, que ce soit le responsable de l'établissement ou un utilisateur simple, il va cliquer sur le bouton "Souscrire au newsletter", puis le site va demander à l'utilisateur de rentrer ses informations (nom, prénom, email) et valider, notre site va enregistrer ces informations là dans notre base de données. Et quand il y aura du nouveau, ces utilisateurs-là vont recevoir dans leur boîte email des messages.
 Le site est responsive, il est consultable sur mobile et tablette en outre des ordinateurs.
 
 ***************************ANDO
 
 Pour la suite du projet, nous allons améliorer les fonctionnalités du site, mettre en relation direct l’étudiant et le responsable. Permettre aux futur étudiant en pleine introspection de s'orienter avec l'aide des témoignages d'étudiants tout en créant une communauté autour d’e-anatra. 
 Plus on aura d’audience auprès du public plus on aura une notoriété auprès des établissements. Nous  allons donc accroitre notre visibilité sur les réseaux sociaux
-Prospecter dans les universités et leur proposer nos services pour avoir de nouvelles candidatures en leur donnant des conseils pour attirer les étudiants.
+Prospecter dans les universités et leur proposer nos services pour avoir de nouvelles candidatures en leur donnant des conseils pour attirer les étudiants. Elargir notre champ d'action et prospecter auprès des écoles, collège et lycée.
 Nous espérons intégrer le service mobile money avec le site pour faciliter les payements.
 Mettre des points d’accès internet dans les universités et cybercafé pour les étudiants n’ayant pas la connexion. Les établissements pourront par la même faire visiter leur campus et établir un contact direct avec leur futur étudiant.
 
