@@ -65,14 +65,9 @@ jQuery ->
                 j += 1
         ens3=tab_niveau.join()
         option3 = ens3.replace(",","\n")
-        #optionsVague3 = $(vagues).filter("optgroup[label='#{escaped_etab}']").html()
         if options3
             $('#inscription_niveau_id').html(option3)
             $('#inscription_niveau_id').parent().show()
-            #$('#inscription_vague_id').html(optionsVague)
-            #$('#inscription_vague_id').parent().show()
         else
             $('#inscription_niveau_id').empty()
             $('#inscription_niveau_id').parent().hide()
-            #$('#inscription_vague_id').empty()
-            #$('#inscription_vague_id').parent().hide()

@@ -37,6 +37,7 @@ class EtabsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
