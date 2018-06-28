@@ -5,6 +5,7 @@ class EtabsController < ApplicationController
     # L'index affiche par défaut la liste des établissements en ordre décroissant c-à-d
     # La plus récent au plus anciens sauf si le visiteur a entré un critère dans le champs de recherche
     @etab = Etab.search(params[:term]).page(1).per(12)
+
   end
 
   def new
@@ -52,6 +53,7 @@ class EtabsController < ApplicationController
   end
 
   def show
+    @etabs = Etab.where(category: get_id.category)
   end
 
   def destroy

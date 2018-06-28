@@ -57,6 +57,6 @@ class ArticlesController < ApplicationController
   end
 
   def get_id
-    @article = Article.find(params:[:id])
+    @article = Article.find(params[:id])
   end
 end
