@@ -1,31 +1,37 @@
-<section class="container-fluid padding-top-3x">
-   <!-- .row -->
-   <div class="row padding-top">
-      
-      <!-- .col-lg-3.col-md-4 -->
-      <!-- Products -->
+<section class="container padding-top-3x">
+    <h1 class="space-top-half tablet-center">Ajouter filière</h1>
+</section>
 
-        <div class="container">
-            <%= form_for @etabs_filiere  do |f| %>
-
-                <fieldset class="form-group">
-                    <label for="filiere">Filiere</label>
-                    <%= f.collection_select :filiere_id, Filiere.order(:filiere), :id, :filiere, include_blank: true %>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="niveau">Niveau</label>
-                    <%= f.collection_select :niveau_id, Niveau.order(:niveau), :id, :niveau, include_blank: true %>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="place">Nombre de place</label>
-                    <%= f.number_field :place %>
-                </fieldset>
-
-                <%= f.submit "Ajouter", class: "btn btn-primary" %>
-                <%= link_to "Voir mes matières", etabs_filiere_path(current_user.etab.id), class: "btn btn-primary" %>
-            <% end %>
+<%= form_for @etabs_filiere  do |f| %>
+<div class="container">
+    <div class="row justify-content-md-center align-items-center">
+        <div class="col col-md-12 col-lg-10 col-xl-8">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="login">
+                <form>
+                   <div class="row login-row">
+                        <div class="col">
+                            Filiere              
+                                <%= f.collection_select :filiere_id, Filiere.order(:filiere), :id, :filiere, {:include_blank => true}, {class: "form-control form-control-lg"} %>
+                        </div>  
+                    </div>
+                    <div class="row login-row">
+                        <div class="col">
+                            Niveau         
+                                <%= f.collection_select :niveau_id, Niveau.order(:niveau), :id, :niveau, {:include_blank => true}, {class: "form-control form-control-lg"} %>
+                        </div>
+                    </div>
+                    <div class="row login-row">
+                        <div class="col">
+                            Nombre place         
+                                <%= f.number_field :place, class: "form-control form-control-lg" %>
+                        </div>
+                    </div>
+                </form>
+                <%= f.submit "Ajouter filière", class: "btn btn-primary form-control form-control-lg" %>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+<% end %>
+</div>
