@@ -52,9 +52,9 @@
         <div class="col-md-3 col-sm-4">
           <div class="blog-post-meta">
               <span>Par </span>
-              <a href="blog.html#"><%= article.etab.nom_etab %></a>
+              <%= article.etab.nom_etab %>
               <span class="divider"></span>
-              <a href="#"><%= article.created_at %></a>
+              <%= article.created_at %>
             <!--div class="column">
               <a href="blog.html#">
                 <i class="material-icons favorite_border"></i>
@@ -62,17 +62,15 @@
               </a>
             </div-->
           </div>
-          <h2 class="blog-post-title"><a href="#" class="ajax-post-link"><%= article.titre %></a></h2>
+          <h2 class="blog-post-title"><a href="<%= article_path(article.id) %>" class="ajax-post-link"><%= article.titre %></a></h2>
         </div>
         <div class="col-md-offset-1 col-sm-8">
           <%= image_tag article.image.url, :class => "space-bottom", :alt => "Blog Post" %>
           <p><%= article.description %></p>
           <div class="blog-post-meta space-top">
             <div class="column">
-              <span>in </span>
-              <a href="blog.html#">Category name</a>
-              <span class="divider"></span>
-              <a href="blog.html#">#tagname</a>
+              <span>publié le </span>
+              <%= article.created_at %>
             </div>
             <div class="column">
               <a href="<%= article_path(article.id) %>" class="read-more">Read More</a>
@@ -85,18 +83,5 @@
 
       <!-- Pagination -->
       <div class="pagination">
-        <div class="page-numbers">
-          <a href="blog.html#">1</a>
-          <a href="blog.html#">2</a>
-          <span class="active">3</span>
-          <a href="blog.html#">4</a>
-          <span>...</span>
-          <a href="blog.html#">10</a>
-        </div>
-        <div class="pager">
-          <a href="blog.html#">Prev</a>
-          <span>|</span>
-          <a href="blog.html#">Next</a>
-        </div>
-      </div>
+        <%= paginate @articles %>
     </section><!-- .container -->

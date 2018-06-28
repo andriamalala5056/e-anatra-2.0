@@ -187,7 +187,13 @@
                 </a>
                 <div class="cart-btn">
                   <%= link_to "", destroy_user_session_path, method: :delete, class: "material-icons remove_circle" %>
-                </div><!-- .cart-btn -->
+                </div>
+                <!--a data-method="delete" href="<%= destroy_user_session_path %>" >
+                    <i>
+                      <span class="material-icons remove_circle"></span>
+                    </i>
+                </a-->
+
               <% else %>
                 <a href="/users/sign_in"><i class="material-icons person"></i></a>
                 <div class="cart-btn">

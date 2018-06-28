@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :get_id, only: [:show, :update, :edit, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(5)
   end
 
   def new

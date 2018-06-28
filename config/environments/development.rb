@@ -60,8 +60,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Configuration mailer de DEVISE
-  config.action_mailer.default_url_options = { host: 'e-anatra-mada.herokuapp.com' }
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'e-anatra-mada.herokuapp.com' }
+   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   address:              'localhost',
