@@ -28,6 +28,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.etab = current_user.etab
     @article.save
+    if @article
+      flash[:success] = "Article enregistré avec succès"
+      redirect_to articles_path
+    else
+      flash[:notice] = "Il y a peut-être un erreur"
+      render "new"
+    end
   end
 
   def edit
