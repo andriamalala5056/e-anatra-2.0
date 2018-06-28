@@ -1,4 +1,5 @@
 class ContactMailer < ApplicationMailer
+    attr_accessor :responsable, :etudiant, :etab
     default from: 'andryhaj@gmail.com'
     def contact(destinataire, message)
         @destinataire = destinataire
@@ -10,13 +11,20 @@ class ContactMailer < ApplicationMailer
         mail(to: "#{@destinataire.email}", subject:"#{@message.subject}")
     end
 
-    def new_subscription(responsable)
+    def new_subscription(responsable,etudiant)
         @responsable = responsable
-        mail(to: "#{@responsable}", subject:"nouvelle inscription")
+        @etudiant = etudiant
+        mail(to: "#{@responsable.email}", subject:"nouvelle inscription")
         
     end
-    def inscrit(etudiant)
+    def inscrit(etudiant,etab)
         @etudiant = etudiant
-        mail(to: "#{@etudiant}", subject:"inscription reussi")
+        @etab = etab
+        mail(to: "#{@etudiant.email}", subject:"inscription reussi")
+    end
+    def validate(etudiant,responsable)
+        @etudiant = etudiant
+        @responsable = responsable
+        mail(to: "#{@etudiant.email}", subject: "Inscription validée ")
     end
 end

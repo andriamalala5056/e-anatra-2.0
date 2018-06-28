@@ -60,9 +60,9 @@ class InscriptionsController < ApplicationController
             inscri.user = current_user
             
             if inscri.save
-                flash[:success]= "Félicitation, vous êtes inscrit!"
-                ContactMailer.new_subscription(@etab.user.email).deliver_now
-                ContactMailer.inscrit(current_user.email).deliver_now
+                flash[:success]= "Félicitation, vous êtes inscrit, un email de confirmation vous a envoyé!"
+                ContactMailer.new_subscription(@etab.user,current_user).deliver_now
+                ContactMailer.inscrit(current_user,@etab).deliver_now
                 redirect_to satusE_path(current_user.id)
             else
                 flash[:error] = "Erreur lors d'inscription! Champ invalid peut être"
@@ -77,6 +77,7 @@ class InscriptionsController < ApplicationController
       @etudiant.valide = true
       if @etudiant.save
         flash[:success] = "Validation ok!"
+        ContactMailer.validate(@etudiant,current_user)
         redirect_to inscription_path(current_user.etab.id)
       else
         flash[:success] = "Erreur!"
