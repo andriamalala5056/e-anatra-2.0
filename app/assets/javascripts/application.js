@@ -15,3 +15,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+$("document").ready(function(){
+    $("#x").on("click", function(){
+        $("#xxx").hide();
+    });
+});
+    

@@ -104,9 +104,9 @@
                                 <% if current_user.etab != nil %>
                                   <li><a href="<%= etab_path(current_user.etab.id) %>">Mon etablissement</a></li>
                                   <li><a href="<%= edit_etab_path(current_user.etab.id) %>">Modifier</a></li>
-                                  <li>
-                                    <a href="<%= new_article_path %>">Créer article</a>
-                                  </li>
+                                  <li><a href="<%= new_article_path %>">Créer article</a></li>
+                                  <li><a href="<%= new_vague_path %>">Créer une session</a></li>
+                                  <li><a href="<%= inscription_path(current_user.etab.id) %>">Tout les étudiants inscrits</a></li>
                                 <% else %>
                                   <li><a href="<%= new_etab_path %>">Créez votre établissement</a></li>
                                 <% end %>
@@ -129,36 +129,31 @@
                           <a href="#">Etudiant</a>
                           <ul class="sub-menu">
                             <li class="submenu-item-has-children">
-                              <a href="#">ETABLISSEMENT</a>
+                              <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                               <ul class="sub-menu">
-                                <li><a href="#">Tout les établissements</a></li>
+                                <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
                               </ul>
                             </li>
+                            
                             <li class="submenu-item-has-children">
-                              <a href="#">FILIERE</a>
+                              <a href="#">INSCRIPTION</a>
                               <ul class="sub-menu">
-                                <li><a href="#">Tout les filières</a></li>
+                                <li><a href="<%= new_inscription_path %>">S'inscrire</a></li>
+                                <li><a href="<%= satusE_path(current_user.id) %>">Votre status</a></li>
                               </ul>
                             </li>
-                            <li><a href="#">Submenu Item 3</a></li>
                           </ul>
                         <% end %>
                         <% else %>
                         <a href="#">Visiteur</a>
                         <ul class="sub-menu">
                           <li class="submenu-item-has-children">
-                            <a href="#">ETABLISSEMENT</a>
+                            <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                             <ul class="sub-menu">
-                              <li><a href="#">Tout les établissements</a></li>
+                              <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
                             </ul>
                           </li>
-                          <li class="submenu-item-has-children">
-                            <a href="#">FILIERE</a>
-                            <ul class="sub-menu">
-                              <li><a href="#">Tout les filières</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="#">Submenu Item 3</a></li>
+                          
                         </ul>
                     <%  end %>
                     <!-- VISITEUR -->
@@ -167,7 +162,7 @@
 
 
                <li>
-                  <a href="#">Blog</a>
+                  <a href="<%= articles_path %>">Blog</a>
                </li>
                <!--li class="menu-item-has-children">
                   <a href="#">Pages</a>
@@ -214,16 +209,18 @@
 
     <!-- LOGIN MESSAGE -->
     <% flash.each do |name, msg| %>
+    <div class="row" id="xxx">
       <section class="col-md-offset-3 padding-left-right margin-for-alert">
         <div class="alert-contain navbar-message">
           <div class="alert-new alert-<%= name %> alert-dismissible show"  role="alert">
               <%= msg %>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"  id="x">
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
         </div>
       </section>
+    </div>
     <% end %>
 
 

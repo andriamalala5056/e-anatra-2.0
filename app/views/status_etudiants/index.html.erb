@@ -1,0 +1,39 @@
+
+<section class="container-fluid padding-top-3x">
+<!-- .row -->
+<div class="row padding-top">
+    <div class="container">
+        <div class="row">
+            <h1>Voici votre statut <%= current_user.first_name %> <%= current_user.name %></h1>
+        </div>
+        <div>
+            <table>
+
+                <% if @statut != nil
+                    @statut.each do |f| %>
+                        <tr><td>Province</td><td>:</td><td><%= f.province.province_name %></td></tr>
+                        <tr><td>Etablissement</td><td>:</td><td><%= f.etab.nom_etab %></td></tr>
+                        <tr><td>Filiere</td><td>:</td><td><%= f.filiere.filiere %></td></tr>
+                        <tr><td>Niveau</td><td>:</td><td><%= f.niveau.niveau %></td></tr>
+                        <tr><td>Debut Session</td><td>:</td><td><%= Date.parse(f.vague.debut_session.to_s).strftime('%a %d %b %Y') %></td></tr>
+                        <tr><td>Fin Session</td><td>:</td><td><%= Date.parse(f.vague.fin_session.to_s).strftime('%a %d %b %Y') %></td></tr>
+                        <tr>
+                            <td>Status</td><td>:</td>
+                            <% if f.valide == true %>
+                                <td>Inscription validé </td>
+                            <% else %>
+                                <td>Validation d'inscription en attente</td>
+                            <% end %>
+                        </tr>
+                        <tr><td>++++++++</td><td>xxxx</td><td>++++++++</td></tr>
+                    <% end %>
+                <% else %>
+                    <tr><td>Vous n'êtes pas inscrit ou votre inscription n'est pas validé !!!</td></tr>
+                    <tr><td><a href="<%= new_inscription_path %>" >Fêtes votre inscription!!</a></td></tr>                    
+                <% end %>
+                        
+            </table>
+        </div>
+    </div>
+</div>
+</section>
