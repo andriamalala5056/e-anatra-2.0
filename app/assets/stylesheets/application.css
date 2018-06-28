@@ -82,6 +82,10 @@
   margin-left: 10px;
 }
 
+.marge-30px {
+  margin-bottom: 176px;
+}
+
 .profile_photo_show {
   max-width: 200px;
 }
@@ -93,3 +97,4 @@
 .margin-top {
   margin-top: 20px;
 }
+

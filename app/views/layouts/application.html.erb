@@ -38,6 +38,7 @@
 		<link rel="stylesheet" href="/css/maps.css">
 
     <!-- Page Preloading -->
+    
     <script src="/js/vendor/page-preloading.js"></script>
 
     <!-- Modernizr -->
@@ -100,7 +101,7 @@
                             <li class="submenu-item-has-children">
                               <a href="<%= filieres_path %>">FILIERE</a>
                               <ul class="sub-menu">
-                                <li><a href="<%= filieres_path %>">Tout les filières</a></li>
+                                <li><a href="<%= filieres_path %>">Toutes les filières</a></li>
                                 <% if current_user.etab != nil %>
                                   <li><a href="<%= etabs_filiere_path(current_user.etab.id) %>">Mes filières</a></li>
                                   <li><a href="<%= new_etabs_filiere_path %>">Ajouter</a></li>
@@ -133,6 +134,18 @@
                         <a href="#">Visiteur</a>
                         <ul class="sub-menu">
                           <li class="submenu-item-has-children">
+                            <a href="#">ETABLISSEMENTS</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Tout les établissements</a></li>
+                            </ul>
+                          </li>
+                          <li class="submenu-item-has-children">
+                            <a href="#">FILIERES</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Toutes les filières</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">ORIENTATION</a></li>
                             <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                             <ul class="sub-menu">
                               <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
@@ -214,7 +227,7 @@
     <!-- Footer -->
     <footer class="footer">
        <div class="column">
-          <p class="text-sm">Need support? Call <span class="text-primary">001 (917) 555-4836</span></p>
+          <p class="text-sm">Pour plus d'information ? <span class="text-primary">(+261) 34 92 785 51</span></p>
           <div class="social-bar text-center space-bottom">
              <a href="#" class="sb-skype" data-toggle="tooltip" data-placement="top" title="Skype">
              <i class="socicon-skype"></i>
@@ -233,24 +246,24 @@
              </a>
           </div>
           <!-- .social-bar -->
-          <p class="copyright">&copy; 2016. Made with <i class="text-danger material-icons favorite"></i> by rokaux.</p>
+          <p class="copyright">&copy; 2018. Made with <i class="text-danger material-icons favorite"></i> with ruby on rails</p>
        </div>
        <!-- .column -->
        <div class="column">
           <h3 class="widget-title">
-             Subscription
-             <small>To receive latest offers and discounts from the shop.</small>
+             Inscrivez-vous
+             <small>Pour recevoir nos actualités.</small>
           </h3>
             <%= form_tag newsletter_index_path, method: "post", class: "subscribe-form" %>
-             <a type="button" class="form-control btn btn-primary" href="<%= new_newsletter_path %>"><i class="material-icons email"></i>  Newsletter</a>
+             <a type="button" class="form-control btn btn-primary" href="<%= new_newsletter_path %>"><i class="material-icons email"></i> Newsletter </a>
              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value=""></div>
        </div>
        <!-- .column -->
        <div class="column">
           <h3 class="widget-title">
-             Payment Methods
-             <small>We support one of the following payment methods.</small>
+             Mode de payement
+             <small>mobile money</small>
           </h3>
           <div class="cards"><img src="/img/cards.png" alt="Cards"></div>
           <!-- Scroll To Top Button -->
