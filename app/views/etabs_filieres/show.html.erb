@@ -28,9 +28,6 @@
                 </table>
             </div>
             
-            <div>
-                <%= link_to "Ajouter une matière", new_etabs_filiere_path, class: "btn btn-primary" %>
-            </div>
         </div>
     </div>
 </section>
@@ -61,7 +58,7 @@
                 </fieldset>
 
                 <%= f.submit "Ajouter", class: "btn btn-primary" %>
-                <%= link_to "Voir mes matières", etabs_filiere_path(current_user.etab.id), class: "btn btn-primary" %>
+                
             <% end %>
         </div>
     </div>

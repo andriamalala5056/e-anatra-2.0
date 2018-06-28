@@ -1,0 +1,59 @@
+<%= form_for @inscription  do |f| %>
+
+      <div class="container">
+        <div class="row">
+            <h1>S'inscrire à un établissement</h1>
+        </div>
+        <div class="row justify-content-md-center align-items-center">
+          <div class="col col-md-12 col-lg-10 col-xl-8">
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="login">
+                <form>
+                   <div class="row login-row">
+                      <div class="col">
+                        Province de votre établissement
+                         <%= f.collection_select :province_id, Province.order(:province_name), :id, :province_name, {:include_blank => true}, {class: "form-control form-control-lg"}  %>
+                      </div>
+    
+                      <div class="col">
+                        Votre établissement
+                         <%= f.grouped_collection_select :etab_id, Province.order(:province_name), :etabs, :province_name, :id, :nom_etab, {:include_blank => true}, {class: "form-control form-control-lg"}  %>
+                      </div>
+                   </div>
+                   <div class="row login-row">
+
+                    <div class="col">
+                        Rentrée
+                        <%= f.grouped_collection_select :vague_id, Etab.order(:nom_etab), :vagues, :nom_etab, :id, :debut_session, {:include_blank => true}, {class: "form-control form-control-lg"}  %>
+                    </div>
+    
+                    <div class="col">
+                    Filière
+                        <%= f.grouped_collection_select :filiere_id, Etab.order(:nom_etab), :filieres, :nom_etab, :id, :filiere, {:include_blank => true}, {class: "form-control form-control-lg"}  %>
+                    </div>
+    
+                   </div>
+    
+                   <div class="row login-row">
+                      <div class="col">
+                        Niveau d'étude
+                         <%= f.grouped_collection_select :niveau_id, Filiere.order(:filiere), :niveaus, :filiere, :id, :niveau, {:include_blank => true}, {class: "form-control form-control-lg"}  %>
+                      </div>
+                   </div>
+                   
+                   <div class="row">
+                      <div class="col">
+                         <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+                      </div>
+                      <div class="col">
+                      </div>
+                   </div>
+                </form>
+              </div>
+            </div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+       
+    <% end %>
