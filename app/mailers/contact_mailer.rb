@@ -17,14 +17,9 @@ class ContactMailer < ApplicationMailer
         mail(to: "#{@responsable.email}", subject:"nouvelle inscription")
         
     end
-    def inscrit(etudiant,etab)
-        @etudiant = etudiant
-        @etab = etab
-        mail(to: "#{@etudiant.email}", subject:"inscription reussi")
-    end
-    def validate(etudiant,responsable)
+    def inscrit(etudiant,responsable)
         @etudiant = etudiant
         @responsable = responsable
-        mail(to: "#{@etudiant.email}", subject: "Inscription validée ")
+        mail(to: "#{@etudiant.email}", subject:"inscription reussi")
     end
 end
