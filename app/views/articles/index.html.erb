@@ -1,2 +1,26 @@
-<h1>Article#index</h1>
-<p>Find me in app/views/article/index.html.erb</p>
+<div class="row">
+
+    <% @articles.each do |etablissement| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail" style="background-image:url(<%= etablissement.image.url %>)">
+          <span class="shop-label text-danger"><%= etablissement.titre %></span>
+          <a href="<%= etab_path(etablissement.id) %>" class="item-link"></a>
+          <div class="shop-item-tools">
+            <a href="<%= etab_path(etablissement.id) %>" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html"><%= etablissement.description %></a></h3>
+          <span class="shop-item-price">
+            <%= image_tag(etablissement.image.url) %>
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-md-4.col-sm-6 -->
+    <% end %>
+    
+  </div><!-- .row -->
+  

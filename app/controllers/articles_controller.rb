@@ -27,7 +27,11 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.etab = current_user.etab
-    @article.save
+    if @article.save
+      redirect_to @article
+    else
+      render :new
+    end
   end
 
   def edit
@@ -57,6 +61,6 @@ class ArticlesController < ApplicationController
   end
 
   def get_id
-    @article = Article.find(params:[:id])
+    @article = Article.find(params[:id])
   end
 end
