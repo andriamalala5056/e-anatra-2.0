@@ -1,5 +1,5 @@
 <script src="/js/newmap.js"></script>
-<section class="container-fluid padding-top-3x">
+
 
    <!-- .row -->
 
@@ -13,7 +13,7 @@
     <div class="row padding-top">
        <div class="col-sm-8 padding-bottom-2x">
           <!-- Nav Tabs -->
-          <ul class="nav-tabs mobile-center" role="tablist">
+          <!--ul class="nav-tabs mobile-center" role="tablist">
              <li><a href="/users/sign_in" role="tab" data-toggle="tab">
                 <i class="material-icons person"></i>
                 Se connecter
@@ -24,13 +24,12 @@
                 Créer un compte
                 </a>
              </li>
-          </ul>
+          </ul-->
           <!-- .nav-tabs -->
           <!-- Tab Panes -->
           <div class="tab-content">
              <div role="tabpanel" class="tab-pane transition fade scale in active" id="profile">
                 <form method="post">
-                   <div class="row">
 
 
 
@@ -105,7 +104,7 @@
                         <label for="description">Description de votre établissement</label>
                         <%= f.text_area :description, class: "form-control form-control-lg text-editor" %>
                    </div>
-
+<h5 class="mobile-center">Veuillez déplacer le <span class="text-semibold">marqueur du map</span> au dessous sur votre emplacement</h5>
                    <div class="row">
                       <div class="col-sm-6">
                          <div class="form-element">
@@ -140,11 +139,6 @@
     </div>
     <!-- .row -->
  </section>
-
-
-
-
-
 
  <% end %>
 
