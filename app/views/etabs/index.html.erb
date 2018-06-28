@@ -8,11 +8,18 @@
 <div class="shop-bar">
             <div class="column">
               <p class="text-sm space-bottom-none">
-                <span class="text-gray">Showing</span> 1-12 items
+                <span class="text-gray">Tout les</span> établissements
               </p>
             </div><!-- .column -->
             <div class="column">
-            <%= render "search_form" %>
+            <!--%= render "search_form" %-->
+            <form method="get" class="search-box">
+              <input type="text" name="term" id="term" class="form-control" placeholder="Nom de l'établissement">
+              <button type="submit">
+                <i class="material-icons search" type="submit" value="Search" data-disable-with="Search"></i>
+              </button>
+            </form>
+            
             </div><!-- .column -->
           </div><!-- .shop-bar -->
 </section><!-- .container -->

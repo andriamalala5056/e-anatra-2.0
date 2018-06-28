@@ -1,13 +1,87 @@
+
+
+
+
+
+    <!-- Single Post Content -->
+    <section class="single-post-wrap">
+      <!-- Close Btn -->
+      <span class="close-btn"><i class="material-icons close"></i></span>
+      <!-- Preloader -->
+      <div class="preloader">
+        <img src="img/preloader.gif" alt="Preloader">
+      </div>
+      <div class="inner">
+        <div class="post-content">
+          <!-- Content loaded via Ajax goes here -->
+        </div><!-- .post-content -->
+        <div class="post-share">
+          <span>Share this post:&nbsp;&nbsp;&nbsp;</span>
+          <div class="social-bar">
+            <a href="blog.html#" class="sb-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+              <i class="socicon-facebook"></i>
+            </a>
+            <a href="blog.html#" class="sb-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+              <i class="socicon-twitter"></i>
+            </a>
+            <a href="blog.html#" class="sb-instagram" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+              <i class="socicon-instagram"></i>
+            </a>
+          </div>
+        </div><!-- .post-share -->
+      </div><!-- .inner -->
+    </section><!-- .single-post-wrap -->
+
+    <!-- Single Post Backdrop -->
+    <div class="single-post-backdrop"></div>
+
+    <!-- Content -->
+    <section class="container padding-top-3x padding-bottom">
+ 
+
+      
+
+
+
+
+
 <% @articles.each do |article| %>
-    <div class="card mb-4">
-        <%= image_tag etablissement.image.url %>
-        <div class="card-body">
-            <h2><%= article.titre %></h2>
-            <p><%= article.description %></p>
-            <a href="#">Voir l'article</a>
+
+      <!-- Post -->
+      <div class="row padding-top paddin-bottom">
+        <div class="col-md-3 col-sm-4">
+          <div class="blog-post-meta">
+              <span>Par </span>
+              <%= article.etab.nom_etab %>
+              <span class="divider"></span>
+              <%= article.created_at %>
+            <!--div class="column">
+              <a href="blog.html#">
+                <i class="material-icons favorite_border"></i>
+                7
+              </a>
+            </div-->
+          </div>
+          <h2 class="blog-post-title"><a href="<%= article_path(article.id) %>" class="ajax-post-link"><%= article.titre %></a></h2>
         </div>
-        <div class="card-footer">
-        Posté il y a <%= article.created_at %>
+        <div class="col-md-offset-1 col-sm-8">
+          <%= image_tag article.image.url, :class => "space-bottom", :alt => "Blog Post" %>
+          <p><%= article.description %></p>
+          <div class="blog-post-meta space-top">
+            <div class="column">
+              <span>publié le </span>
+              <%= article.created_at %>
+            </div>
+            <div class="column">
+              <a href="<%= article_path(article.id) %>" class="read-more">Read More</a>
+            </div>
+          </div>
         </div>
-    </div>
-<% end %>
+      </div><!-- .row -->
+      <hr>
+    <% end %>  
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <%= paginate @articles %>
+    </section><!-- .container -->

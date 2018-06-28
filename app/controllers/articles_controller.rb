@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :get_id, only: [:show, :update, :edit, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(5)
   end
 
   def new
@@ -28,6 +28,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.etab = current_user.etab
     @article.save
+    if @article
+      flash[:success] = "Article enregistré avec succès"
+      redirect_to articles_path
+    else
+      flash[:notice] = "Il y a peut-être un erreur"
+      render "new"
+    end
   end
 
   def edit
@@ -57,6 +64,6 @@ class ArticlesController < ApplicationController
   end
 
   def get_id
-    @article = Article.find(params:[:id])
+    @article = Article.find(params[:id])
   end
 end

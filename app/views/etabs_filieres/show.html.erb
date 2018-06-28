@@ -1,14 +1,15 @@
+<section class="container padding-top-3x">
+  <h1 class="space-top-half tablet-center">Tout mes filières</h1>
+</section><!-- .container-fluid -->
 
-<section class="container-fluid padding-top-3x">
-    <!-- .row -->
-    <div class="row padding-top">
-        <div class="container">
-            <div class="row"><h1>TOUS MES FILIERES</h1></div>
-            <div>
-                <table>
+<section class="container padding-bottom-3x">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
                     <thead>
                         <th>Matière</th><th>Niveau</th><th>Nombre place</th><th></th>
                     </thead>
+                    <tbody>
                     <% if @e_f_n != nil %>
                         <% @e_f_n.each do |list| %>
                         <tr>
@@ -25,41 +26,65 @@
                         </tr>
                         <% end %>
                     <% end %>
-                </table>
-            </div>
-            
-        </div>
+                    </tbody>
+            </table>
+        </div>    
     </div>
 </section>
 
-<section class="container-fluid padding-top-3x">
-   <!-- .row -->
-   <div class="row padding-top">
-      
-      <!-- .col-lg-3.col-md-4 -->
-      <!-- Products -->
 
-        <div class="container">
-            <%= form_for @etabs_filiere  do |f| %>
+<%= form_for @etabs_filiere  do |f| %>
 
-                <fieldset class="form-group">
-                    <label for="filiere">Filières</label>
-                    <%= f.collection_select :filiere_id, Filiere.order(:filiere), :id, :filiere, include_blank: true %>
-                </fieldset>
 
-                <fieldset class="form-group">
-                    <label for="niveau">Niveaux</label>
-                    <%= f.collection_select :niveau_id, Niveau.order(:niveau), :id, :niveau, include_blank: true %>
-                </fieldset>
+<section class="col-md-offset-3 padding-left-right">
+    <h1 class="mobile-center">Ajouter <span class="text-semibold">une filière</span></h1>
+    <div class="row padding-top">
+       <div class="col-sm-8 padding-bottom-2x">
+          <!-- Nav Tabs -->
+          
+          <!-- .nav-tabs -->
+          <!-- Tab Panes -->
+          <div class="tab-content">
+             <div role="tabpanel" class="tab-pane transition fade scale in active" id="profile">
+                <form method="post">
+                   
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="filière">Filière</label>
+                            <%= f.collection_select :filiere_id, Filiere.order(:filiere), :id, :filiere, {:include_blank => true}, {class: "form-control form-control-lg"} %>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-element">
+                            <label for="niveau">Niveau</label>
+                            <%= f.collection_select :niveau_id, Niveau.order(:niveau), :id, :niveau, {:include_blank => true}, {class: "form-control form-control-lg"} %>
+                         </div>
+                      </div>
+                   </div>
 
-                <fieldset class="form-group">
-                    <label for="place">Nombres de places</label>
-                    <%= f.number_field :place %>
-                </fieldset>
+                   <div class="form-element">
+                      <label for="niveau">Place(s) disponible</label>
+                      <%= f.number_field :place, class: "form-control form-control-lg" %>
+                   </div>
 
-                <%= f.submit "Ajouter", class: "btn btn-primary" %>
-                
-            <% end %>
-        </div>
+                   <div class="row">
+                      <div class="col-sm-6">
+                         
+                      </div>
+                      <div class="col-sm-6 text-right mobile-center"><br>
+                         <button type="submit" class="btn btn-primary waves-effect waves-light">Créer un compte</button>
+                      </div>
+                   </div>
+
+                </form>
+             </div>
+          </div>
+          <!-- .tab-content -->
+       </div>
+       <!-- .col-sm-8 -->
     </div>
-</section>
+    <!-- .row -->
+ </section>
+
+ <% end %>
