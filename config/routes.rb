@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'status_etudiants/index/:id', to: "status_etudiants#index", as: 'satusE'
   resources :inscriptions
   resources :etabs_filieres
   get 'newsletter/index'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   resources :filieres
 
   devise_for :users
+
+  resources :vagues
 
   root 'home#index'
 end

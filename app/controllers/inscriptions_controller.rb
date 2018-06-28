@@ -3,10 +3,28 @@ class InscriptionsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      if current_user.role == "responsable"
+        if current_user.etab != nil
+          @inscriptions = Inscription.where(etab_id: params[:id])
+        end
+      end
+    end
   end
 
   def new
-    @inscription = Inscription.new
+    if user_signed_in?
+      if current_user.role == "etudiant" 
+        #si c'est un étudiant
+        @inscription = Inscription.new
+      else
+        flash[:error] = "Vous n'êtes pas un étudiant!"
+        redirect_to etabs_path
+      end
+    else
+      flash[:error] = "Connecter vous d'abord!"
+      redirect_to user_session_path
+    end
   end
 
   def create
@@ -21,8 +39,9 @@ class InscriptionsController < ApplicationController
         @inscrit = Inscription.where(etab_id: @etab.id)
         couple =false
         @inscrit.each do |assoc|
-          if ((assoc.user == current_user) && (assoc.vague == @vague) && (assoc.etab == @etab) && (assoc.province == @province) && (assoc.filiere == @filiere) && (assoc.niveau == @niveau))
-                # couple déjà existé
+          #if ((assoc.user == current_user) && (assoc.vague == @vague) && (assoc.etab == @etab) && (assoc.province == @province) && (assoc.filiere == @filiere) && (assoc.niveau == @niveau))
+          if ((assoc.user == current_user) && (assoc.etab == @etab))   
+          # couple déjà existé
                 couple = true
           end
         end
@@ -30,7 +49,7 @@ class InscriptionsController < ApplicationController
         # couple déjà existé
         if couple
             flash[:error] = "Vous êtes déjà inscrit!"
-            redirect_to etab_path(@etab.id)
+            redirect_to satusE_path(current_user.id)
         else
             inscri = Inscription.new()
             inscri.filiere = @filiere
@@ -42,20 +61,53 @@ class InscriptionsController < ApplicationController
             
             if inscri.save
                 flash[:success]= "Félicitation, vous êtes inscrit!"
-                redirect_to inscriptions_path
+                redirect_to satusE_path(current_user.id)
             else
                 flash[:error] = "Erreur lors d'inscription! Champ invalid peut être"
-                redirect_to new_etab_path
+                redirect_to new_inscription_path
             end
         end
   end
 
   def edit
+    @etudiant = Inscription.find(params[:id])
+    if @etudiant.valide == false
+      @etudiant.valide = true
+      if @etudiant.save
+        flash[:success] = "Validation ok!"
+        redirect_to inscription_path(current_user.etab.id)
+      else
+        flash[:success] = "Erreur!"
+        redirect_to inscription_path(current_user.etab.id)
+      end
+    else
+      @etudiant.valide = false
+      if @etudiant.save
+        flash[:success] = "Annulation ok!"
+        redirect_to inscription_path(current_user.etab.id)
+      else
+        flash[:success] = "Erreur!"
+        redirect_to inscription_path(current_user.etab.id)
+      end
+    end
   end
 
   def update
+    # #validation etudiant & envoyer mail à l'étudiant en question pour lui dire que son inscription est validé ou non
+    # @etudiant = Inscription.find(params[:id])
+    # @etudiant.valide = true
+    # if @etudiant.save
+    #   flash[:success] = "Validation ok!"
+    #   redirect_to inscription_path(current_user.etab.id)
+    # else
+    #   flash[:success] = "Erreur!"
+    #   redirect_to inscription_path(current_user.etab.id)
+    # end
   end
 
-  def delete
+  def destroy
+    @etudiant = Inscription.find(params[:id])
+    @etudiant.destroy
+    redirect_to inscription_path(current_user.etab.id)
   end
 end

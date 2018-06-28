@@ -1,2 +1,40 @@
-<h1>Inscriptions#show</h1>
-<p>Find me in app/views/inscriptions/show.html.erb</p>
+
+<section class="container-fluid padding-top-3x">
+<!-- .row -->
+<div class="row padding-top">
+    <div class="container">
+        <div class="row">
+            <h1>Tout les élèves inscrit dans mon établissement</h1>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>Nom etudiant</th><th>Prenom etudiant</th><th>Province</th><th>Etablissement</th><th>Filiere</th><th>Niveau</th><th>Debut Session</th><th>Fin Session</th><th></th><th></th>
+                </thead>
+                <% @inscriptions.each do |f| %>
+                    <tr>
+                        <td><%= f.user.name %></td>
+                        <td><%= f.user.first_name %></td>
+                        <td><%= f.province.province_name %></td>
+                        <td><%= f.etab.nom_etab %></td>
+                        <td><%= f.filiere.filiere %></td>
+                        <td><%= f.niveau.niveau %></td>
+                        <td><%= Date.parse(f.vague.debut_session.to_s).strftime('%a %d %b %Y') %> </td>
+                        <td><%= Date.parse(f.vague.fin_session.to_s).strftime('%a %d %b %Y') %> </td>
+                        <td>
+                            <% if f.valide == false %>
+                                <a href="<%= edit_inscription_path(f.id) %>" class="btn btn-primary" >Valider</a>
+                            <% else %>
+                                <span>Inscrit/</span><span><a href="<%= edit_inscription_path(f.id) %>" >Annuler</a></span>
+                            <% end %>
+                        </td>
+                        <td>
+                            <a href="<%= inscription_path(f.id) %>" class="btn btn-danger" data-confirm="Êtes vous sur ?" data-method="DELETE">Supprimer</a>
+                        </td>
+                    </tr>
+                <% end %>
+            </table>
+            </div>
+        </div>
+    </div>
+</section>
