@@ -1,2 +1,13 @@
-<h1>Article#index</h1>
-<p>Find me in app/views/article/index.html.erb</p>
+<% @articles.each do |article| %>
+    <div class="card mb-4">
+        <%= image_tag etablissement.image.url %>
+        <div class="card-body">
+            <h2><%= article.titre %></h2>
+            <p><%= article.description %></p>
+            <a href="#">Voir l'article</a>
+        </div>
+        <div class="card-footer">
+        Posté il y a <%= article.created_at %>
+        </div>
+    </div>
+<% end %>
