@@ -28,6 +28,6 @@
 # filiere6 = Filiere.create(filiere:"Eléctronique")
 # filiere7 = Filiere.create(filiere:"Télécommunication")
 # filiere8 = Filiere.create(filiere:"Paramed")
-# filiere9 = Filiere.create(filiere:"Electronique")
 # filiere10 = Filiere.create(filiere:"Agronomie")
 
+newsletter1 = Newsletter.create("andry", "haja", "andry@gmail.com")

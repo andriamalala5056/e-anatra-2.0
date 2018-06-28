@@ -51,10 +51,37 @@
   border-radius: .25rem;
 }
 
-.margin-for-alert {
-	padding-top: 20px;
-}
-
 
 
 /* DEVISE NOTIFICATION END */
+
+
+
+.shop-thumbnail {
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.show-etab-img {
+  width: 100%;
+  min-height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.high-z-index {
+  z-index: 4;
+}
+
+.user-profile {
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+.profile_photo_show {
+  max-width: 200px;
+}

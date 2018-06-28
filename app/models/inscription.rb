@@ -4,4 +4,5 @@ class Inscription < ApplicationRecord
     belongs_to :vague
     belongs_to :filiere
     belongs_to :niveau
+    belongs_to :province
 end

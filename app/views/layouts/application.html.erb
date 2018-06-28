@@ -33,12 +33,16 @@
     <link href="/css/theme.min.css" rel="stylesheet" media="screen">
 
     <link rel="stylesheet" href="/imput_file/css/style.css">
+    
+    <!-- Google map -->
+		<link rel="stylesheet" href="/css/maps.css">
 
     <!-- Page Preloading -->
     <script src="/js/vendor/page-preloading.js"></script>
 
     <!-- Modernizr -->
     <script src="/js/vendor/modernizr.custom.js"></script>
+
   </head>
 
   <body class="page-preloading">
@@ -60,22 +64,8 @@
          </a><!-- site-logo.visible-desktop -->
          <a href="index.html" class="site-logo visible-mobile">
          <span>[</span> E <span>]</span>
-         </a><!-- site-logo.visible-mobile -->
-         <!-- Language Switcher -->
-         <!--div class="lang-switcher">
-            <div class="lang-toggle">
-               <img src="/img/flags/FR.png" alt="French">
-               <i class="material-icons arrow_drop_down"></i>
-               <ul class="lang-dropdown">
-                  <li><a href="index.html#"><img src="/img/flags/GB.png" alt="English">GB</a></li>
-                  <li><a href="index.html#"><img src="/img/flags/DE.png" alt="German">DE</a></li>
-                  <li><a href="index.html#"><img src="/img/flags/IT.png" alt="Italian">IT</a></li>
-               </ul>
-            </div>
-         </div-->
-         <!-- .lang-switcher -->
-         <!-- Main Navigation -->
-         <!-- Control the position of navigation via modifier classes: "text-left, text-center, text-right" -->
+         </a>
+
          <nav class="main-navigation text-center">
             <ul class="menu">
                <li class="current-menu-item">
@@ -93,22 +83,22 @@
                           <a href="#">Responsable</a>
                           <ul class="sub-menu">
                             <li class="submenu-item-has-children">
-                              <a href="#">ETABLISSEMENT</a>
+                              <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                               <ul class="sub-menu">
                                 <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
                                 <% if current_user.etab != nil %>
                                   <li><a href="<%= etab_path(current_user.etab.id) %>">Mon etablissement</a></li>
-                                  <li><a href="#">Modifier</a></li>
-                                  <li>
-                                    <a href="<%= new_article_path %>">Créer article</a>
-                                  </li>
+                                  <li><a href="<%= edit_etab_path(current_user.etab.id) %>">Modifier</a></li>
+                                  <li><a href="<%= new_article_path %>">Créer article</a></li>
+                                  <li><a href="<%= new_vague_path %>">Créer une session</a></li>
+                                  <li><a href="<%= inscription_path(current_user.etab.id) %>">Tout les étudiants inscrits</a></li>
                                 <% else %>
                                   <li><a href="<%= new_etab_path %>">Créez votre établissement</a></li>
                                 <% end %>
                               </ul>
                             </li>
                             <li class="submenu-item-has-children">
-                              <a href="#">FILIERE</a>
+                              <a href="<%= filieres_path %>">FILIERE</a>
                               <ul class="sub-menu">
                                 <li><a href="<%= filieres_path %>">Toutes les filières</a></li>
                                 <% if current_user.etab != nil %>
@@ -124,18 +114,19 @@
                           <a href="#">Etudiant</a>
                           <ul class="sub-menu">
                             <li class="submenu-item-has-children">
-                              <a href="#">ETABLISSEMENT</a>
+                              <a href="<%= etabs_path %>">ETABLISSEMENT</a>
                               <ul class="sub-menu">
-                                <li><a href="#">Tout les établissements</a></li>
+                                <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
                               </ul>
                             </li>
+                            
                             <li class="submenu-item-has-children">
-                              <a href="#">FILIERE</a>
+                              <a href="#">INSCRIPTION</a>
                               <ul class="sub-menu">
-                                <li><a href="#">Toutes les filières</a></li>
+                                <li><a href="<%= new_inscription_path %>">S'inscrire</a></li>
+                                <li><a href="<%= satusE_path(current_user.id) %>">Votre status</a></li>
                               </ul>
                             </li>
-                            <li><a href="#">Submenu Item 3</a></li>
                           </ul>
                         <% end %>
                         <% else %>
@@ -154,6 +145,12 @@
                             </ul>
                           </li>
                           <li><a href="#">ORIENTATION</a></li>
+                            <a href="<%= etabs_path %>">ETABLISSEMENT</a>
+                            <ul class="sub-menu">
+                              <li><a href="<%= etabs_path %>">Tout les établissements</a></li>
+                            </ul>
+                          </li>
+                          
                         </ul>
                     <%  end %>
                     <!-- VISITEUR -->
@@ -162,7 +159,7 @@
 
 
                <li>
-                  <a href="#">Blog</a>
+                  <a href="<%= articles_path %>">Blog</a>
                </li>
                <!--li class="menu-item-has-children">
                   <a href="#">Pages</a>
@@ -178,34 +175,49 @@
 
          <!-- .main-navigation -->
          <!-- Toolbar -->
-         <div class="toolbar">
+          <div class="toolbar">
             <div class="inner">
-              <% if user_signed_in? %>  
-              <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
-                <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <a href="index.html#" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
+
+              <% if user_signed_in? %>
+                <!--a href="#"><i class="material-icons check_circle"></i></a-->
+                <a href="/users/edit">
+                  <%= image_tag(current_user.image.thumb.url, class: "user-profile") %>
+                </a>
+                <div class="cart-btn">
+                  <%= link_to "", destroy_user_session_path, method: :delete, class: "material-icons remove_circle" %>
+                </div><!-- .cart-btn -->
               <% else %>
-                <a href="" class="mobile-menu-toggle"><i class="material-icons menu"></i></a>
                 <a href="/users/sign_in"><i class="material-icons person"></i></a>
+                <div class="cart-btn">
+                  <a href="/users/sign_up">
+                    <i>
+                      <span class="material-icons person_add"></span>
+                    </i>
+                  </a>
+                </div><!-- .cart-btn -->
               <% end %>
-            </div>
-            <!-- .inner -->
-         </div>
+
+            </div><!-- .inner -->
+          </div>
          <!-- .toolbar -->
     </header>
     <!-- .navbar.navbar-sticky -->
 
     <!-- LOGIN MESSAGE -->
     <% flash.each do |name, msg| %>
+    <div class="row" id="xxx">
       <section class="col-md-offset-3 padding-left-right margin-for-alert">
         <div class="alert-contain navbar-message">
           <div class="alert-new alert-<%= name %> alert-dismissible show"  role="alert">
               <%= msg %>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"  id="x">
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
         </div>
       </section>
+    </div>
     <% end %>
 
 

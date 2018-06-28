@@ -1,5 +1,54 @@
-<%= render "search_form" %>
-<h1>Liste des établissement</h1>
-<% @etab.each do |etablissement| %>
-    <%= etablissement.nom_etab %>
-<% end %>
+<!-- Page Title -->
+<section class="container padding-top-3x">
+  <h1 class="space-top-half tablet-center">Trouver son école</h1>
+</section><!-- .container-fluid -->
+
+<!-- Filters Bar -->
+<section class="container padding-top">
+<div class="shop-bar">
+            <div class="column">
+              <p class="text-sm space-bottom-none">
+                <span class="text-gray">Showing</span> 1-12 items
+              </p>
+            </div><!-- .column -->
+            <div class="column">
+            <%= render "search_form" %>
+            </div><!-- .column -->
+          </div><!-- .shop-bar -->
+</section><!-- .container -->
+
+<!-- Shop Catalog -->
+<section class="container padding-bottom-3x">
+  <div class="row">
+
+    <% @etab.each do |etablissement| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="shop-item">
+        <div class="shop-thumbnail" style="background-image:url(<%= etablissement.image.url %>)">
+          <span class="shop-label text-danger"><%= etablissement.category %></span>
+          <a href="<%= etab_path(etablissement.id) %>" class="item-link"></a>
+          <div class="shop-item-tools">
+            <a href="<%= etab_path(etablissement.id) %>" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+              <i class="material-icons favorite_border"></i>
+            </a>
+          </div>
+        </div>
+        <div class="shop-item-details">
+          <h3 class="shop-item-title"><a href="shop-single.html"><%= etablissement.nom_etab %></a></h3>
+          <span class="shop-item-price">
+            <%= etablissement.address %>
+          </span>
+        </div>
+      </div><!-- .shop-item -->
+    </div><!-- .col-md-4.col-sm-6 -->
+    <% end %>
+    
+  </div><!-- .row -->
+  <hr>
+
+  <!-- Pagination -->
+  <div class="pagination padding-bottom">
+    <%= paginate @etab %>
+  </div><!-- .pagination -->
+</section><!-- .container -->
+

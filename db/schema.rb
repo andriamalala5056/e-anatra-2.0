@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_115934) do
+ActiveRecord::Schema.define(version: 2018_06_27_073531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.bigint "user_id"
+    t.bigint "province_id"
+    t.index ["province_id"], name: "index_etabs_on_province_id"
     t.index ["user_id"], name: "index_etabs_on_user_id"
   end
 
@@ -68,9 +70,11 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "province_id"
     t.index ["etab_id"], name: "index_inscriptions_on_etab_id"
     t.index ["filiere_id"], name: "index_inscriptions_on_filiere_id"
     t.index ["niveau_id"], name: "index_inscriptions_on_niveau_id"
+    t.index ["province_id"], name: "index_inscriptions_on_province_id"
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
     t.index ["vague_id"], name: "index_inscriptions_on_vague_id"
   end
@@ -111,6 +115,10 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
@@ -135,6 +143,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
   end
 
   add_foreign_key "articles", "etabs"
+  add_foreign_key "etabs", "provinces"
   add_foreign_key "etabs", "users"
   add_foreign_key "etabs_filieres", "etabs"
   add_foreign_key "etabs_filieres", "filieres"
@@ -142,6 +151,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_115934) do
   add_foreign_key "inscriptions", "etabs"
   add_foreign_key "inscriptions", "filieres"
   add_foreign_key "inscriptions", "niveaus"
+  add_foreign_key "inscriptions", "provinces"
   add_foreign_key "inscriptions", "users"
   add_foreign_key "inscriptions", "vagues"
   add_foreign_key "vagues", "etabs"
