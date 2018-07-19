@@ -1,0 +1,13 @@
+<h1> Nouvelle inscription </h1>
+<p> Salama e <%= @responsable.name %> </p>
+<p> une nouvelle inscription vient d'etre fait </p>
+<div >
+    nom : <%= @etudiant.name %>
+    email : <%= @etudiant.email %>
+    nom : <%= @etudiant.name %>
+    address : <%= @etudiant.address %>
+    <%= image_tag(@etudiant.image.url) %>
+    Nous vous informons qu'un nouveau dossier d'inscription vous a été envoyer.
+    <%= link_to "Veuillez consulter les détails de votre futur étudiant(e).", new_user_session_url %>
+    Merci,
+</div>

@@ -1,0 +1,5 @@
+<h1> Inscription validée </h1>
+<p><%= @etudiant.name %> vous etes inscrit sur l'etablissement : <%= @responsable.etab.nom_etab %> Félicitations !
+Nous vous informons que votre inscription à notre établissement a était valider. 
+Pour plus d'informations veuillez consulter <%= link_to "ce lien.", new_user_session_url %>
+</p>
